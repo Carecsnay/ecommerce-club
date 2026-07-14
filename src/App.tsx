@@ -1,9 +1,10 @@
 import './App.css';
+import Header from './components/HeaderComponent';
 
 function App() {
   return (
     <div>
-      Olá react!
+      <Header />
     </div>
   );
 }

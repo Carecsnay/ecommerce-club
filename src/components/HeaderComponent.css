@@ -1,0 +1,34 @@
+.header-container {
+    width: 100%;
+    flex-direction: row;
+    background-color: #212529;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    color: #f8f9fa;
+}
+
+.header-title {
+    font-weight: bold;
+    font-size: 1.5rem;
+}
+
+.header-items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-item {
+    font-weight: 600;
+    font-size: 1rem;
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+}
+
+.header-item:nth-child(1),
+.header-item:nth-child(2),
+.header-item:nth-child(3) {
+    margin-right: 40px;
+}
