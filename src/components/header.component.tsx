@@ -1,4 +1,4 @@
-import './HeaderComponent.css';
+import './header.style.css';
 import { BsCart } from "react-icons/bs";
 import React from 'react';
 
