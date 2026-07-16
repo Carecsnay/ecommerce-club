@@ -1,0 +1,64 @@
+{
+  "category": [
+    {
+      "id": "1",
+      "name": "camisetas",
+      "displayName": "Camisetas e Tops",
+      "imageUrl": "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=600"
+    },
+    {
+      "id": "2",
+      "name": "calcas",
+      "displayName": "Calças e Jeans",
+      "imageUrl": "https://images.unsplash.com/photo-1541099649105-f69ad21f3246?w=600"
+    },
+    {
+      "id": "3",
+      "name": "casacos",
+      "displayName": "Casacos e Jaquetas",
+      "imageUrl": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=600"
+    },
+    {
+      "id": "4",
+      "name": "vestidos",
+      "displayName": "Vestidos e Macacões",
+      "imageUrl": "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600"
+    },
+    {
+      "id": "5",
+      "name": "calcados",
+      "displayName": "Sapatos e Tênis",
+      "imageUrl": "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600"
+    },
+    {
+      "id": "6",
+      "name": "roupa-intima",
+      "displayName": "Moda Íntima",
+      "imageUrl": "https://images.unsplash.com/photo-1616150638538-ffb0679a3fc4?w=600"
+    },
+    {
+      "id": "7",
+      "name": "esportivo",
+      "displayName": "Moda Fitness",
+      "imageUrl": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=600"
+    },
+    {
+      "id": "8",
+      "name": "acessorios",
+      "displayName": "Bolsas e Acessórios",
+      "imageUrl": "https://images.unsplash.com/photo-1576243345690-4e4b79b63288?w=600"
+    },
+    {
+      "id": "9",
+      "name": "moda-praia",
+      "displayName": "Moda Praia",
+      "imageUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600"
+    },
+    {
+      "id": "10",
+      "name": "alfaiataria",
+      "displayName": "Alfaiataria e Social",
+      "imageUrl": "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600"
+    }
+  ]
+}
