@@ -10,9 +10,19 @@ const Header = () => {
     const handleLoginClick = () => {
         navigate("/login");
     };
+
+    const handleHomeClick = () => {
+        navigate("/");
+    };
     return (
         <HeaderContainer>
-            <HeaderTitle>Club Clothing</HeaderTitle>
+            <HeaderTitle
+                onClick={() => {
+                    handleHomeClick();
+                }}
+            >
+                Club Clothing
+            </HeaderTitle>
             <HeaderItem>
                 <HeaderItems>
                     <HeaderItem>
