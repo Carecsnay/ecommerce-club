@@ -10,7 +10,7 @@ const FILogin = CiLogin as React.ElementType;
 
 const LoginPage = () => {
     return (
-        <div>
+        <>
             <LoginContainer>
                 <LoginContent>
                     <LoginHeadline>Entre com a sua conta</LoginHeadline>
@@ -27,7 +27,7 @@ const LoginPage = () => {
                     <CustomButton name="Entrar" icon={<FILogin size={25} />} />
                 </LoginContent>
             </LoginContainer>
-        </div>
+        </>
     );
 };
 

@@ -20,6 +20,11 @@ export const LoginContent = styled.div`
     flex-direction: column;
     align-items: center;
     width: 450px;
+    background-color: ${Colors.input.background};
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    color: ${Colors.text.black};
+    padding: 40px;
 `;
 
 export const LoginSubtitle = styled.p`
