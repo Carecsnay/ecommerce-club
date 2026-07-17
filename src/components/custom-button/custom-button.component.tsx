@@ -1,18 +1,22 @@
-import React, { FunctionComponent } from "react";
+import React, { ButtonHTMLAttributes, FunctionComponent } from "react";
 import { CustomButtonContainer, IconContainer } from "./custom-button";
 
-interface CustomButtonProp {
+// herda as propriedades de um elemento HTML (caso botão)
+// para quando usar em outro componente, as propriedades serem acessíveis.
+interface CustomButtonProp extends ButtonHTMLAttributes<HTMLButtonElement> {
     name: string;
     icon?: React.ReactNode;
 }
 
-const CustomButton: FunctionComponent<CustomButtonProp> = ({ name, icon }) => {
+// colocando o ...rest eu consigo puxar todas as pripriedades e o meu botão quando for usado em outro
+// componente terá todas elas.
+
+const CustomButton: FunctionComponent<CustomButtonProp> = ({ children, name, icon, ...rest }) => {
     return (
-        <CustomButtonContainer>
-            <>
-                {icon && <IconContainer>{icon}</IconContainer>}
-                {name}
-            </>
+        <CustomButtonContainer {...rest}>
+            {icon && <IconContainer>{icon}</IconContainer>}
+            {name}
+            {children}
         </CustomButtonContainer>
     );
 };
