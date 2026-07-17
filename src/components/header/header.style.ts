@@ -28,7 +28,10 @@ export const HeaderItem = styled.div`
     font-size: 1rem;
     align-items: center;
     display: flex;
-    cursor: pointer;
+
+    & span:hover {
+        cursor: pointer;
+    }
 
     &:nth-child(1),
     &:nth-child(2),
