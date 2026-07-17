@@ -1,7 +1,11 @@
 import styled from "styled-components";
 import Colors from "../../theme/theme.colors";
 
-export const CategoryItemContainer = styled.div`
+interface CategoryItemContainerProps {
+    backgroundImage: string;
+}
+
+export const CategoryItemContainer = styled.div<CategoryItemContainerProps>`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,6 +21,7 @@ export const CategoryItemContainer = styled.div`
     background-color: rgba(0, 0, 0, 0.3);
     background-blend-mode: color;
     min-height: 220px;
+    background-image: ${(props) => `url('${props.backgroundImage}')`};
 `;
 
 export const CategoryName = styled.div`
