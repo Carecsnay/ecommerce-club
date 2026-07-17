@@ -17,9 +17,11 @@ const LoginPage = () => {
                     <CustomButton name="Entrar com a conta google" icon={<BSGoogle size={22} />} />
                     <LoginSubtitle>ou entre com o seu e-mail</LoginSubtitle>
                     <LoginInputContainer>
+                        <p>E-mail</p>
                         <CustomInput placeholder="Digite seu e-mail" />
                     </LoginInputContainer>
                     <LoginInputContainer>
+                        <p>Senha</p>
                         <CustomInput placeholder="Digite sua senha" />
                     </LoginInputContainer>
                     <CustomButton name="Entrar" icon={<FILogin size={25} />} />
