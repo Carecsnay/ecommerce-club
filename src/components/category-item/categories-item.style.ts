@@ -42,7 +42,7 @@ export const CategoryName = styled.div`
         background: rgba(233, 236, 239, 0.7);
     }
 
-    &:nth-child(1) {
+    & p:nth-child(1) {
         font-weight: 600;
     }
 `;
