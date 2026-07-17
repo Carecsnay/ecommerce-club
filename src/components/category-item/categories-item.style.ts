@@ -1,4 +1,7 @@
-.category-item-container {
+import styled from "styled-components";
+import Colors from "../../theme/theme.colors";
+
+export const CategoryItemContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
@@ -14,14 +17,14 @@
     background-color: rgba(0, 0, 0, 0.3);
     background-blend-mode: color;
     min-height: 220px;
-}
+`;
 
-.category-name {
+export const CategoryName = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    color: #f8f9fa;
+    color: ${Colors.text.white};
     text-align: center;
     background: rgba(233, 236, 239, 0.45);
     padding-top: 10px;
@@ -29,17 +32,17 @@
     padding-right: 30px;
     padding-left: 30px;
     border-radius: 10px;
-    border: 1px solid #212529;
+    border: 1px solid ${Colors.background.dark};
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     transition: all 0.5s ease;
     min-width: 250px;
-}
 
-.category-name:hover {
-    cursor: pointer;
-    background: rgba(233, 236, 239, 0.7);
-}
+    &:hover {
+        cursor: pointer;
+        background: rgba(233, 236, 239, 0.7);
+    }
 
-.category-name p:nth-child(1) {
-    font-weight: 600;
-}
+    &:nth-child(1) {
+        font-weight: 600;
+    }
+`;
