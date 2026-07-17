@@ -1,27 +1,26 @@
-import './header.style.css';
 import { BsCart } from "react-icons/bs";
-import React from 'react';
+import React from "react";
+import { HeaderContainer, HeaderItem, HeaderItems, HeaderTitle } from "./header.style";
 
 const Header = () => {
     const IconeCarrinho = BsCart as React.ElementType;
 
     return (
-        <div className="header-container">
-            <h2 className="header-title">Club Clothing</h2>
-            <div className="header-items-container">
-                <div className='header-items'>
-                    <div className="header-item">Explorar</div>
-                    <div className="header-item">Login</div>
-                    <div className="header-item">Criar conta</div>
-                    <div className="header-item">
+        <HeaderContainer>
+            <HeaderTitle>Club Clothing</HeaderTitle>
+            <HeaderItem>
+                <HeaderItems>
+                    <HeaderItem>Explorar</HeaderItem>
+                    <HeaderItem>Login</HeaderItem>
+                    <HeaderItem>Criar conta</HeaderItem>
+                    <HeaderItem>
                         <IconeCarrinho size={25} />
-                        <p style={{ marginLeft: 5 }
-                        }>5</p>
-                    </div>
-                </div>
-            </div>
-        </div >
+                        <p style={{ marginLeft: 5 }}>5</p>
+                    </HeaderItem>
+                </HeaderItems>
+            </HeaderItem>
+        </HeaderContainer>
     );
-}
+};
 
 export default Header;
