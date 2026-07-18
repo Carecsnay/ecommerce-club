@@ -13,7 +13,7 @@ export const CustomInputContainer = styled.input<CustomInputContainerProps>`
     padding-left: 20px;
     padding-top: 10px;
     padding-bottom: 10px;
-    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35);
     border-radius: 10px;
     color: ${Colors.text.black};
     border: ${(props) => (props.hasError ? `2px solid ${Colors.error}` : "none")};
