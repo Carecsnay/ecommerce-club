@@ -7,6 +7,9 @@ import CustomButton from "../../components/custom-button/custom-button.component
 import CustomInput from "../../components/custom-input/custom-input.component";
 
 import { useForm } from "react-hook-form";
+import InputErrorMessage from "../../components/input-error-message/input.error.message";
+import { isEmail } from "validator";
+
 const BSGoogle = BsGoogle as React.ElementType;
 const FILogin = CiLogin as React.ElementType;
 
@@ -19,7 +22,7 @@ const LoginPage = () => {
 
     //o handle submit só chama a função de baixo caso todos os campos sejam validados corretamente.
     const handleSubmitPress = (data: any) => {
-        console.log({data});
+        console.log({ data });
     };
 
     console.log(errors);
@@ -34,18 +37,35 @@ const LoginPage = () => {
                     <LoginInputContainer>
                         <p>E-mail</p>
                         <CustomInput
-                            hasError={!!errors?.email} //!! converte em boolean
+                            type="email"
                             placeholder="Digite seu e-mail"
-                            {...register("email", { required: true })}
+                            hasError={!!errors.email}
+                            {...register("email", {
+                                required: true,
+                                validate: (value) => {
+                                    return isEmail(value);
+                                },
+                            })}
                         />
+
+                        {errors?.email?.type === "required" && (
+                            <InputErrorMessage> O email é obrigatório.</InputErrorMessage>
+                        )}
+
+                        {errors?.email?.type === "validate" && (
+                            <InputErrorMessage>Digite um e-mail válido (ex: nome@email.com).</InputErrorMessage>
+                        )}
                     </LoginInputContainer>
                     <LoginInputContainer>
                         <p>Senha</p>
                         <CustomInput
                             hasError={!!errors?.password}
                             placeholder="Digite sua senha"
-                            {...register("password", { required: true, minLength: 8 })}
+                            {...register("password", { required: true })}
                         />
+                        {errors?.password?.type === "required" && (
+                            <InputErrorMessage> A senha é obrigatório.</InputErrorMessage>
+                        )}
                     </LoginInputContainer>
                     <CustomButton
                         name="Entrar"
