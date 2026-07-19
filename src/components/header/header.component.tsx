@@ -14,6 +14,10 @@ const Header = () => {
     const handleHomeClick = () => {
         navigate("/");
     };
+
+    const handleSignUpClick = () => {
+        navigate("/sign-up");
+    };
     return (
         <HeaderContainer>
             <HeaderTitle
@@ -35,7 +39,11 @@ const Header = () => {
                     >
                         <span>Login</span>
                     </HeaderItem>
-                    <HeaderItem>
+                    <HeaderItem
+                        onClick={() => {
+                            handleSignUpClick();
+                        }}
+                    >
                         <span>Criar conta</span>
                     </HeaderItem>
                     <HeaderItem>
