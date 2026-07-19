@@ -10,6 +10,11 @@ import { useForm } from "react-hook-form";
 import InputErrorMessage from "../../components/input-error-message/input.error.message";
 import { isEmail } from "validator";
 
+interface LoginPageForm {
+    email: string;
+    password: string;
+}
+
 const BSGoogle = BsGoogle as React.ElementType;
 const FILogin = CiLogin as React.ElementType;
 
@@ -18,7 +23,7 @@ const LoginPage = () => {
         register,
         formState: { errors },
         handleSubmit,
-    } = useForm();
+    } = useForm<LoginPageForm>();
 
     //o handle submit só chama a função de baixo caso todos os campos sejam validados corretamente.
     const handleSubmitPress = (data: any) => {
@@ -62,9 +67,10 @@ const LoginPage = () => {
                             hasError={!!errors?.password}
                             placeholder="Digite sua senha"
                             {...register("password", { required: true })}
+                            type="password"
                         />
                         {errors?.password?.type === "required" && (
-                            <InputErrorMessage> A senha é obrigatório.</InputErrorMessage>
+                            <InputErrorMessage> A senha é obrigatória.</InputErrorMessage>
                         )}
                     </LoginInputContainer>
                     <CustomButton
