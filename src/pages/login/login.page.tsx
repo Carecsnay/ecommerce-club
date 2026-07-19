@@ -26,11 +26,7 @@ const LoginPage = () => {
     } = useForm<LoginPageForm>();
 
     //o handle submit só chama a função de baixo caso todos os campos sejam validados corretamente.
-    const handleSubmitPress = (data: any) => {
-        console.log({ data });
-    };
-
-    console.log(errors);
+    const handleSubmitPress = (data: any) => {};
 
     return (
         <>
@@ -42,9 +38,9 @@ const LoginPage = () => {
                     <LoginInputContainer>
                         <p>E-mail</p>
                         <CustomInput
-                            type="email"
-                            placeholder="Digite seu e-mail"
                             hasError={!!errors.email}
+                            placeholder="Digite seu e-mail"
+                            type="email"
                             {...register("email", {
                                 required: true,
                                 validate: (value) => {
@@ -66,8 +62,8 @@ const LoginPage = () => {
                         <CustomInput
                             hasError={!!errors?.password}
                             placeholder="Digite sua senha"
-                            {...register("password", { required: true })}
                             type="password"
+                            {...register("password", { required: true })}
                         />
                         {errors?.password?.type === "required" && (
                             <InputErrorMessage> A senha é obrigatória.</InputErrorMessage>
