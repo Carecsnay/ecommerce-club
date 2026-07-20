@@ -334,6 +334,221 @@ const categories = [
             },
         ],
     },
+    {
+        id: "6228f52eb7e6cb904bbe01AA",
+        name: "vestidos",
+        displayName: "Vestidos e Macacões",
+        imageUrl: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?w=600",
+        products: [
+            {
+                id: "vestido-001",
+                name: "Vestido Floral de Verão",
+                price: 220,
+                imageUrl:
+                    "https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+            },
+            {
+                id: "vestido-002",
+                name: "Vestido Elegante Vermelho",
+                price: 350,
+                imageUrl:
+                    "https://images.unsplash.com/photo-1595777457583-95e059d581b8?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+            },
+            {
+                id: "macacao-001",
+                name: "Macacão Pantalona Preto",
+                price: 280,
+                imageUrl:
+                    "https://images.unsplash.com/photo-1509631179647-0177331693ae?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+            },
+            {
+                id: "vestido-003",
+                name: "Vestido Midi Branco",
+                price: 240,
+                imageUrl:
+                    "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?ixlib=rb-1.2.1&auto=format&fit=crop&w=688&q=80",
+            },
+            {
+                id: "macacao-002",
+                name: "Macacão Utilitário Beige",
+                price: 260,
+                imageUrl:
+                    "https://images.unsplash.com/photo-1539109136881-3be0616acf4b?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+            },
+        ],
+    },
+    {
+        id: "6228f52eb7e6cb904bbe0BB",
+        name: "esportivo",
+        displayName: "Moda Fitness",
+        imageUrl: "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=600",
+        products: [
+            {
+                id: "fitness-001",
+                name: "Top Esportivo de Alta Sustentação",
+                price: 110,
+                imageUrl:
+                    "https://images.unsplash.com/photo-1518310383802-640c2de311b2?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+            },
+            {
+                id: "fitness-002",
+                name: "Calça Legging Cintura Alta",
+                price: 160,
+                imageUrl:
+                    "https://images.unsplash.com/photo-1506629082955-511b1aa562c8?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+            },
+            {
+                id: "fitness-003",
+                name: "Camiseta Dry Fit Performance",
+                price: 90,
+                imageUrl:
+                    "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+            },
+            {
+                id: "fitness-004",
+                name: "Shorts de Corrida Duplo",
+                price: 120,
+                imageUrl:
+                    "https://images.unsplash.com/photo-1539185441755-769473a23570?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+            },
+            {
+                id: "fitness-005",
+                name: "Regata Cava Machão Treino",
+                price: 85,
+                imageUrl:
+                    "https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+            },
+        ],
+    },
+    {
+        id: "6228f52eb7e6cb904bbe01CC",
+        name: "acessorios",
+        displayName: "Bolsas e Acessórios",
+        imageUrl: "https://images.unsplash.com/photo-1576243345690-4e4b79b63288?w=600",
+        products: [
+            {
+                id: "acessorios-001",
+                name: "Bolsa de Couro Estruturada",
+                price: 320,
+                imageUrl:
+                    "https://images.unsplash.com/photo-1584917865442-de89df76afd3?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+            },
+            {
+                id: "acessorios-002",
+                name: "Óculos de Sol Estilo Aviador",
+                price: 180,
+                imageUrl:
+                    "https://images.unsplash.com/photo-1511499767150-a48a237f0083?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+            },
+            {
+                id: "acessorios-003",
+                name: "Mochila Minimalista Urbana",
+                price: 290,
+                imageUrl:
+                    "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+            },
+            {
+                id: "acessorios-004",
+                name: "Cinto de Couro Clássico",
+                price: 95,
+                imageUrl:
+                    "https://images.unsplash.com/photo-1624222247344-550fb60583dc?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+            },
+            {
+                id: "acessorios-005",
+                name: "Relógio Analógico Minimalista",
+                price: 450,
+                imageUrl:
+                    "https://images.unsplash.com/photo-1524805444758-089113d48a6d?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+            },
+        ],
+    },
+    {
+        id: "6228f52eb7e6cb904bbe01DD",
+        name: "moda-praia",
+        displayName: "Moda Praia",
+        imageUrl: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=600",
+        products: [
+            {
+                id: "praia-001",
+                name: "Biquíni Cortininha Clássico",
+                price: 140,
+                imageUrl:
+                    "https://images.unsplash.com/photo-1576185850227-1f72b7f8d483?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+            },
+            {
+                id: "praia-002",
+                name: "Maiô Engana-Mamãe Tropical",
+                price: 210,
+                imageUrl:
+                    "https://images.unsplash.com/photo-1582639510494-c80b5172b05f?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+            },
+            {
+                id: "praia-003",
+                name: "Bermuda de Praia Masculina",
+                price: 130,
+                imageUrl:
+                    "https://images.unsplash.com/photo-1565299585323-38d6b0865b47?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+            },
+            {
+                id: "praia-004",
+                name: "Canga Saída de Praia Rendada",
+                price: 110,
+                imageUrl:
+                    "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+            },
+            {
+                id: "praia-005",
+                name: "Chapéu de Palha praiano",
+                price: 95,
+                imageUrl:
+                    "https://images.unsplash.com/photo-1521335629791-ce4aec67dd1c?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+            },
+        ],
+    },
+    {
+        id: "6228f52eb7e6cb904bbe01EE",
+        name: "alfaiataria",
+        displayName: "Alfaiataria e Social",
+        imageUrl: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?w=600",
+        products: [
+            {
+                id: "alfaiataria-001",
+                name: "Blazer Botoeira Dupla",
+                price: 420,
+                imageUrl:
+                    "https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+            },
+            {
+                id: "alfaiataria-002",
+                name: "Calça Social Slim Fit",
+                price: 260,
+                imageUrl:
+                    "https://images.unsplash.com/photo-1479064555552-3ef4979f8908?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+            },
+            {
+                id: "alfaiataria-003",
+                name: "Camisa Social Maquinetada",
+                price: 210,
+                imageUrl:
+                    "https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+            },
+            {
+                id: "alfaiataria-004",
+                name: "Colete de Alfaiataria",
+                price: 190,
+                imageUrl:
+                    "https://images.unsplash.com/photo-1507679799987-c73779587ccf?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+            },
+            {
+                id: "alfaiataria-005",
+                name: "Bermuda Alfaiataria Feminina",
+                price: 180,
+                imageUrl:
+                    "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+            },
+        ],
+    },
 ];
 
 const main = async () => {
