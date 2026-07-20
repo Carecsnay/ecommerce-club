@@ -9,7 +9,7 @@ import { CategoriesContainer, CategoriesContent } from "./categories.style";
 import { db } from "../../config/firebase.config";
 
 const Categories = () => {
-    const [categories] = useState<Category[]>([]);
+    const [categories, setCategories] = useState<Category[]>([]);
 
     const fetchCategories = async () => {
         try {
@@ -19,7 +19,7 @@ const Categories = () => {
             querySnapshot.forEach((doc: any) => {
                 categoriesFromFireBaseStore.push(doc.data());
             });
-            console.log(categoriesFromFireBaseStore);
+            setCategories(categoriesFromFireBaseStore);
         } catch (error) {
             console.log(error);
         }
