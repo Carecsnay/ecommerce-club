@@ -9,6 +9,8 @@ import CustomInput from "../../components/custom-input/custom-input.component";
 import { useForm } from "react-hook-form";
 import InputErrorMessage from "../../components/input-error-message/input.error.message";
 import { isEmail } from "validator";
+import { AuthError, AuthErrorCodes, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../config/firebase.config";
 
 interface LoginPageForm {
     email: string;
@@ -22,11 +24,22 @@ const LoginPage = () => {
     const {
         register,
         formState: { errors },
+        setError,
         handleSubmit,
     } = useForm<LoginPageForm>();
 
     //o handle submit só chama a função de baixo caso todos os campos sejam validados corretamente.
-    const handleSubmitPress = (data: any) => {};
+    const handleSubmitPress = async (data: LoginPageForm) => {
+        try {
+            const userCredentials = await signInWithEmailAndPassword(auth, data.email, data.password);
+            console.log({ userCredentials });
+        } catch (error) {
+            const _error = error as AuthError;
+            if (_error.code === AuthErrorCodes.INVALID_LOGIN_CREDENTIALS) {
+                return setError("password", { type: "wrongPassword" });
+            }
+        }
+    };
 
     return (
         <>
@@ -67,6 +80,10 @@ const LoginPage = () => {
                         />
                         {errors?.password?.type === "required" && (
                             <InputErrorMessage> A senha é obrigatória.</InputErrorMessage>
+                        )}
+
+                        {errors?.password?.type === "wrongPassword" && (
+                            <InputErrorMessage> A senha inválida.</InputErrorMessage>
                         )}
                     </LoginInputContainer>
                     <CustomButton
