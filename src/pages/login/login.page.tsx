@@ -35,9 +35,13 @@ const LoginPage = () => {
             console.log({ userCredentials });
         } catch (error) {
             const _error = error as AuthError;
+
             if (_error.code === AuthErrorCodes.INVALID_LOGIN_CREDENTIALS) {
-                return setError("password", { type: "wrongPassword" });
+                setError("email", { type: "invalidCredentials" });
+                return setError("password", { type: "invalidCredentials" });
             }
+
+            console.log(error);
         }
     };
 
@@ -63,11 +67,15 @@ const LoginPage = () => {
                         />
 
                         {errors?.email?.type === "required" && (
-                            <InputErrorMessage> O email é obrigatório.</InputErrorMessage>
+                            <InputErrorMessage>O email é obrigatório.</InputErrorMessage>
                         )}
 
                         {errors?.email?.type === "validate" && (
                             <InputErrorMessage>Digite um e-mail válido (ex: nome@email.com).</InputErrorMessage>
+                        )}
+
+                        {errors?.email?.type === "invalidCredentials" && (
+                            <InputErrorMessage>E-mail ou senha incorretos.</InputErrorMessage>
                         )}
                     </LoginInputContainer>
                     <LoginInputContainer>
@@ -79,11 +87,11 @@ const LoginPage = () => {
                             {...register("password", { required: true })}
                         />
                         {errors?.password?.type === "required" && (
-                            <InputErrorMessage> A senha é obrigatória.</InputErrorMessage>
+                            <InputErrorMessage>A senha é obrigatória.</InputErrorMessage>
                         )}
 
-                        {errors?.password?.type === "wrongPassword" && (
-                            <InputErrorMessage> A senha inválida.</InputErrorMessage>
+                        {errors?.password?.type === "invalidCredentials" && (
+                            <InputErrorMessage>E-mail ou senha incorretos.</InputErrorMessage>
                         )}
                     </LoginInputContainer>
                     <CustomButton
