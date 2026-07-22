@@ -2,6 +2,8 @@ import { BsCart } from "react-icons/bs";
 import React from "react";
 import { HeaderContainer, HeaderItem, HeaderItems, HeaderTitle } from "./header.style";
 import { useNavigate } from "react-router-dom";
+import { signOut } from "firebase/auth";
+import { auth } from "../../config/firebase.config";
 
 const Header = () => {
     const IconeCarrinho = BsCart as React.ElementType;
@@ -45,6 +47,13 @@ const Header = () => {
                         }}
                     >
                         <span>Criar conta</span>
+                    </HeaderItem>
+                    <HeaderItem
+                        onClick={() => {
+                            signOut(auth);
+                        }}
+                    >
+                        <span>Logout</span>
                     </HeaderItem>
                     <HeaderItem>
                         <IconeCarrinho size={25} />
