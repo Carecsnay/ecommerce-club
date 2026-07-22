@@ -1,16 +1,18 @@
 import { BsGoogle } from "react-icons/bs";
 import { CiLogin } from "react-icons/ci";
 
-import { LoginContainer, LoginContent, LoginHeadline, LoginInputContainer, LoginSubtitle } from "./login.style";
+import { AuthError, AuthErrorCodes, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
+import { auth, db, googleProvider } from "../../config/firebase.config";
+import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 
 import CustomButton from "../../components/custom-button/custom-button.component";
 import CustomInput from "../../components/custom-input/custom-input.component";
+import InputErrorMessage from "../../components/input-error-message/input.error.message";
 
 import { useForm } from "react-hook-form";
-import InputErrorMessage from "../../components/input-error-message/input.error.message";
 import { isEmail } from "validator";
-import { AuthError, AuthErrorCodes, signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../config/firebase.config";
+
+import { LoginContainer, LoginContent, LoginHeadline, LoginInputContainer, LoginSubtitle } from "./login.style";
 
 interface LoginPageForm {
     email: string;
@@ -28,7 +30,6 @@ const LoginPage = () => {
         handleSubmit,
     } = useForm<LoginPageForm>();
 
-    //o handle submit só chama a função de baixo caso todos os campos sejam validados corretamente.
     const handleSubmitPress = async (data: LoginPageForm) => {
         try {
             const userCredentials = await signInWithEmailAndPassword(auth, data.email, data.password);
@@ -45,12 +46,45 @@ const LoginPage = () => {
         }
     };
 
+    const handleSignInWithGooglePress = async () => {
+        try {
+            const userCredentials = await signInWithPopup(auth, googleProvider);
+
+            const querySnapshot = await getDocs(
+                query(collection(db, "users"), where("id", "==", userCredentials.user.uid)),
+            );
+
+            const user = querySnapshot.docs[0]?.data();
+
+            if (!user) {
+                const firstName = userCredentials.user.displayName?.split(" ")[0];
+                const lastName = userCredentials.user.displayName?.split(" ")[1];
+
+                await addDoc(collection(db, "users"), {
+                    id: userCredentials.user.uid,
+                    email: userCredentials.user.email,
+                    firstName,
+                    lastName,
+                    provider: "google",
+                });
+            }
+            console.log(user);
+        } catch (error) {
+            console.log(error);
+        }
+    };
     return (
         <>
             <LoginContainer>
                 <LoginContent>
                     <LoginHeadline>Entre com a sua conta</LoginHeadline>
-                    <CustomButton name="Entrar com a conta google" icon={<BSGoogle size={22} />} />
+                    <CustomButton
+                        name="Entrar com a conta google"
+                        icon={<BSGoogle size={22} />}
+                        onClick={() => {
+                            handleSignInWithGooglePress();
+                        }}
+                    />
                     <LoginSubtitle>ou entre com o seu e-mail</LoginSubtitle>
                     <LoginInputContainer>
                         <p>E-mail</p>
