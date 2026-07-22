@@ -42,6 +42,7 @@ const SignUpPage = () => {
                 email: userCredentials.user.email,
                 firstName: data.firstName,
                 lastName: data.lastName,
+                provider: "firebase",
             });
         } catch (error) {
             const _error = error as AuthError;
@@ -143,7 +144,7 @@ const SignUpPage = () => {
 
                         {errors?.passwordConfirmation?.type === "required" && (
                             <InputErrorMessage>A confirmação de senha é obrigatória.</InputErrorMessage>
-                        )}  
+                        )}
 
                         {errors?.passwordConfirmation?.type === "validate" && (
                             <InputErrorMessage>A confirmação de senha precisa ser igual a senha.</InputErrorMessage>
