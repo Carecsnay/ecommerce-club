@@ -1,6 +1,6 @@
 import { onAuthStateChanged } from "firebase/auth";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import { useContext } from "react";
+import { useContext, useEffect } from "react"; // 1. Importamos o useEffect
 
 import Header from "./components/header/header.component";
 import HomePage from "./pages/home/home.page";
@@ -16,21 +16,34 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 function App() {
     const { isAuthenticated, loginUser, logoutUser } = useContext(UserContext);
 
-    onAuthStateChanged(auth, async (user) => {
-        const SigningOut = isAuthenticated && !user;
-        if (SigningOut) {
-            return logoutUser();
-        }
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, async (user) => {
+            if (!user) {
+                if (isAuthenticated) {
+                    logoutUser();
+                }
+                return;
+            }
 
-        const querySnapshot = await getDocs(query(collection(db, "users"), where("id", "==", user?.uid)));
-        const userFromFirestore = querySnapshot.docs[0]?.data();
+            try {
+                const querySnapshot = await getDocs(query(collection(db, "users"), where("id", "==", user.uid)));
 
-        const SigningIn = !isAuthenticated && user;
-        if (SigningIn) {
-            return loginUser(userFromFirestore as any);
-        }
-    });
-    console.log(isAuthenticated);
+                const userFromFirestore = querySnapshot.docs[0]?.data();
+
+                if (!isAuthenticated && userFromFirestore) {
+                    loginUser(userFromFirestore as any);
+                }
+            } catch (error) {
+                console.error("Erro ao buscar dados do usuário no Firestore:", error);
+            }
+        });
+
+        // Função de limpeza (cancela o listener quando o componente desmonta)
+        return () => unsubscribe();
+    }, [isAuthenticated, loginUser, logoutUser]);
+
+    console.log("Status de autenticação:", isAuthenticated);
+
     return (
         <BrowserRouter>
             <Header />
