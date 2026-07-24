@@ -1,4 +1,4 @@
-import React, { InputHTMLAttributes, FunctionComponent } from "react";
+import React, { FunctionComponent, InputHTMLAttributes } from "react";
 import { CustomInputContainer } from "./custom-input";
 
 interface CustomInputProps extends InputHTMLAttributes<HTMLInputElement> {

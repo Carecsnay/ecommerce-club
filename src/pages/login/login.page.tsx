@@ -2,8 +2,8 @@ import { BsGoogle } from "react-icons/bs";
 import { CiLogin } from "react-icons/ci";
 
 import { AuthError, AuthErrorCodes, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
-import { auth, db, googleProvider } from "../../config/firebase.config";
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import { auth, db, googleProvider } from "../../config/firebase.config";
 
 import CustomButton from "../../components/custom-button/custom-button.component";
 import CustomInput from "../../components/custom-input/custom-input.component";

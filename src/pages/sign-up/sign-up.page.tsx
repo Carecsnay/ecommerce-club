@@ -1,16 +1,16 @@
-import { FiLogIn } from "react-icons/fi";
-import { useForm } from "react-hook-form";
-import validator from "validator";
 import { AuthError, AuthErrorCodes, createUserWithEmailAndPassword } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
+import { useForm } from "react-hook-form";
+import { FiLogIn } from "react-icons/fi";
+import validator from "validator";
 
 import CustomButton from "../../components/custom-button/custom-button.component";
 import CustomInput from "../../components/custom-input/custom-input.component";
 
 import { SignUpContainer, SignUpContent, SignUpHeadline, SignUpInputContainer } from "./sign-up.style";
 
-import { auth, db } from "../../config/firebase.config";
 import InputErrorMessage from "../../components/input-error-message/input.error.message";
+import { auth, db } from "../../config/firebase.config";
 
 interface SignUpForm {
     firstName: string;

@@ -1,4 +1,4 @@
-import { getDocs, collection } from "firebase/firestore";
+import { collection, getDocs } from "firebase/firestore";
 
 import Category from "../../types/category.type";
 import CategoryItem from "../category-item/categories-item.component";

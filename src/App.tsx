@@ -1,6 +1,6 @@
 import { onAuthStateChanged } from "firebase/auth";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useContext, useEffect } from "react"; // 1. Importamos o useEffect
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Header from "./components/header/header.component";
 import HomePage from "./pages/home/home.page";
@@ -9,9 +9,9 @@ import SignUpPage from "./pages/sign-up/sign-up.page";
 
 import "./App.css";
 
+import { collection, getDocs, query, where } from "firebase/firestore";
 import { auth, db } from "./config/firebase.config";
 import { UserContext } from "./context/user.context";
-import { collection, getDocs, query, where } from "firebase/firestore";
 
 function App() {
     const { isAuthenticated, loginUser, logoutUser } = useContext(UserContext);
