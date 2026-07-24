@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 
 import Header from "./components/header/header.component";
+import LoadingComponent from "./components/loading/loading.component";
 import { auth, db } from "./config/firebase.config";
 import { UserContext } from "./context/user.context";
 import { userConverter } from "./converter/firestore.converter";
@@ -45,9 +46,9 @@ function App() {
         return () => unsubscribe();
     }, [isAuthenticated, loginUser, logoutUser]);
 
-    console.log("Status de autenticação:", isAuthenticated);
+    // console.log("Status de autenticação:", isAuthenticated);
 
-    if (isInitializing) return null;
+    if (isInitializing) return <LoadingComponent />;
 
     return (
         <BrowserRouter>
