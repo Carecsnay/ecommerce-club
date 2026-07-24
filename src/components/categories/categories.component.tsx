@@ -5,13 +5,16 @@ import { db } from "../../config/firebase.config";
 import { categoryConverter } from "../../converter/firestore.converter";
 import Category from "../../types/category.type";
 import CategoryItem from "../category-item/categories-item.component";
+import LoadingComponent from "../loading/loading.component";
 import { CategoriesContainer, CategoriesContent } from "./categories.style";
 
 const Categories = () => {
     const [categories, setCategories] = useState<Category[]>([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     const fetchCategories = async () => {
         try {
+            setIsLoading(true);
             const categoriesFromFireBaseStore: Category[] = [];
             const categoriesRef = collection(db, "categories").withConverter(categoryConverter);
             const querySnapshot = await getDocs(categoriesRef);
@@ -21,6 +24,8 @@ const Categories = () => {
             setCategories(categoriesFromFireBaseStore);
         } catch (error) {
             console.log(error);
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -29,15 +34,18 @@ const Categories = () => {
     }, []);
 
     return (
-        <CategoriesContainer>
-            <CategoriesContent>
-                {categories.map((category) => (
-                    <div key={category.id}>
-                        <CategoryItem category={category} />
-                    </div>
-                ))}
-            </CategoriesContent>
-        </CategoriesContainer>
+        <>
+            {isLoading && <LoadingComponent />}
+            <CategoriesContainer>
+                <CategoriesContent>
+                    {categories.map((category) => (
+                        <div key={category.id}>
+                            <CategoryItem category={category} />
+                        </div>
+                    ))}
+                </CategoriesContent>
+            </CategoriesContainer>
+        </>
     );
 };
 
