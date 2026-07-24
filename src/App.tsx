@@ -7,6 +7,7 @@ import "./App.css";
 import Header from "./components/header/header.component";
 import { auth, db } from "./config/firebase.config";
 import { UserContext } from "./context/user.context";
+import { userConverter } from "./converter/firestore.converter";
 import HomePage from "./pages/home/home.page";
 import LoginPage from "./pages/login/login.page";
 import SignUpPage from "./pages/sign-up/sign-up.page";
@@ -26,11 +27,13 @@ function App() {
             }
 
             try {
-                const querySnapshot = await getDocs(query(collection(db, "users"), where("id", "==", user.uid)));
+                const querySnapshot = await getDocs(
+                    query(collection(db, "users").withConverter(userConverter), where("id", "==", user.uid)),
+                );
                 const userFromFirestore = querySnapshot.docs[0]?.data();
 
                 if (userFromFirestore) {
-                    loginUser(userFromFirestore as any);
+                    loginUser(userFromFirestore);
                 }
             } catch (error) {
                 console.error("Erro ao buscar dados do usuário no Firestore:", error);
