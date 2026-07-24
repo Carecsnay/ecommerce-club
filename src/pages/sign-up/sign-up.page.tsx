@@ -1,16 +1,17 @@
 import { AuthError, AuthErrorCodes, createUserWithEmailAndPassword } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
+import { useContext, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { FiLogIn } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 import validator from "validator";
 
 import CustomButton from "../../components/custom-button/custom-button.component";
 import CustomInput from "../../components/custom-input/custom-input.component";
-
-import { SignUpContainer, SignUpContent, SignUpHeadline, SignUpInputContainer } from "./sign-up.style";
-
 import InputErrorMessage from "../../components/input-error-message/input.error.message";
 import { auth, db } from "../../config/firebase.config";
+import { UserContext } from "../../context/user.context";
+import { SignUpContainer, SignUpContent, SignUpHeadline, SignUpInputContainer } from "./sign-up.style";
 
 interface SignUpForm {
     firstName: string;
@@ -23,6 +24,15 @@ interface SignUpForm {
 const FILogin = FiLogIn as React.ElementType;
 
 const SignUpPage = () => {
+    const { isAuthenticated } = useContext(UserContext);
+
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            navigate("/");
+        }
+    }, [isAuthenticated, navigate]);
     const {
         register,
         handleSubmit,
