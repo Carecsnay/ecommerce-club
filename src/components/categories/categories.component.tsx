@@ -1,13 +1,11 @@
 import { collection, getDocs } from "firebase/firestore";
-
-import Category from "../../types/category.type";
-import CategoryItem from "../category-item/categories-item.component";
-
 import { useEffect, useState } from "react";
-import { CategoriesContainer, CategoriesContent } from "./categories.style";
 
 import { db } from "../../config/firebase.config";
 import { categoryConverter } from "../../converter/firestore.converter";
+import Category from "../../types/category.type";
+import CategoryItem from "../category-item/categories-item.component";
+import { CategoriesContainer, CategoriesContent } from "./categories.style";
 
 const Categories = () => {
     const [categories, setCategories] = useState<Category[]>([]);

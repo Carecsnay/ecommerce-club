@@ -1,12 +1,11 @@
-import { BsCart } from "react-icons/bs";
-import React, { useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import { signOut } from "firebase/auth";
-
-import { HeaderContainer, HeaderItem, HeaderItems, HeaderTitle } from "./header.style";
+import React, { useContext } from "react";
+import { BsCart } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 import { auth } from "../../config/firebase.config";
 import { UserContext } from "../../context/user.context";
+import { HeaderContainer, HeaderItem, HeaderItems, HeaderTitle } from "./header.style";
 
 const Header = () => {
     const IconeCarrinho = BsCart as React.ElementType;
