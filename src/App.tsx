@@ -1,19 +1,18 @@
 import { onAuthStateChanged } from "firebase/auth";
-import { useContext, useEffect } from "react"; // 1. Importamos o useEffect
+import { collection, getDocs, query, where } from "firebase/firestore";
+import { useContext, useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import "./App.css";
 
 import Header from "./components/header/header.component";
+import { auth, db } from "./config/firebase.config";
+import { UserContext } from "./context/user.context";
 import HomePage from "./pages/home/home.page";
 import LoginPage from "./pages/login/login.page";
 import SignUpPage from "./pages/sign-up/sign-up.page";
 
-import "./App.css";
-
-import { collection, getDocs, query, where } from "firebase/firestore";
-import { auth, db } from "./config/firebase.config";
-import { UserContext } from "./context/user.context";
-
 function App() {
+    const [isInitializing, setIsInitializing] = useState(true);
     const { isAuthenticated, loginUser, logoutUser } = useContext(UserContext);
 
     useEffect(() => {
@@ -22,27 +21,30 @@ function App() {
                 if (isAuthenticated) {
                     logoutUser();
                 }
+                setIsInitializing(false);
                 return;
             }
 
             try {
                 const querySnapshot = await getDocs(query(collection(db, "users"), where("id", "==", user.uid)));
-
                 const userFromFirestore = querySnapshot.docs[0]?.data();
 
-                if (!isAuthenticated && userFromFirestore) {
+                if (userFromFirestore) {
                     loginUser(userFromFirestore as any);
                 }
             } catch (error) {
                 console.error("Erro ao buscar dados do usuário no Firestore:", error);
+            } finally {
+                setIsInitializing(false);
             }
         });
 
-        // Função de limpeza (cancela o listener quando o componente desmonta)
         return () => unsubscribe();
     }, [isAuthenticated, loginUser, logoutUser]);
 
     console.log("Status de autenticação:", isAuthenticated);
+
+    if (isInitializing) return null;
 
     return (
         <BrowserRouter>
