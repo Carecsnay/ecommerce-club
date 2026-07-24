@@ -1,6 +1,6 @@
 import { AuthError, AuthErrorCodes, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsGoogle } from "react-icons/bs";
 import { CiLogin } from "react-icons/ci";
@@ -10,6 +10,7 @@ import { isEmail } from "validator";
 import CustomButton from "../../components/custom-button/custom-button.component";
 import CustomInput from "../../components/custom-input/custom-input.component";
 import InputErrorMessage from "../../components/input-error-message/input.error.message";
+import LoadingComponent from "../../components/loading/loading.component";
 import { auth, db, googleProvider } from "../../config/firebase.config";
 import { UserContext } from "../../context/user.context";
 import { LoginContainer, LoginContent, LoginHeadline, LoginInputContainer, LoginSubtitle } from "./login.style";
@@ -30,6 +31,8 @@ const LoginPage = () => {
         handleSubmit,
     } = useForm<LoginPageForm>();
 
+    const [isLoading, setIsLoading] = useState(false);
+
     const { isAuthenticated } = useContext(UserContext);
 
     const navigate = useNavigate();
@@ -42,6 +45,7 @@ const LoginPage = () => {
 
     const handleSubmitPress = async (data: LoginPageForm) => {
         try {
+            setIsLoading(true);
             const userCredentials = await signInWithEmailAndPassword(auth, data.email, data.password);
             console.log({ userCredentials });
         } catch (error) {
@@ -52,11 +56,14 @@ const LoginPage = () => {
                 return setError("password", { type: "invalidCredentials" });
             }
             console.log(error);
+        } finally {
+            setIsLoading(false);
         }
     };
 
     const handleSignInWithGooglePress = async () => {
         try {
+            setIsLoading(true);
             const userCredentials = await signInWithPopup(auth, googleProvider);
 
             const querySnapshot = await getDocs(
@@ -80,10 +87,13 @@ const LoginPage = () => {
             console.log(user);
         } catch (error) {
             console.log(error);
+        } finally {
+            setIsLoading(false);
         }
     };
     return (
         <>
+            {isLoading && <LoadingComponent />}
             <LoginContainer>
                 <LoginContent>
                     <LoginHeadline>Entre com a sua conta</LoginHeadline>

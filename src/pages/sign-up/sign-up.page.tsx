@@ -1,6 +1,6 @@
 import { AuthError, AuthErrorCodes, createUserWithEmailAndPassword } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FiLogIn } from "react-icons/fi";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,7 @@ import validator from "validator";
 import CustomButton from "../../components/custom-button/custom-button.component";
 import CustomInput from "../../components/custom-input/custom-input.component";
 import InputErrorMessage from "../../components/input-error-message/input.error.message";
+import LoadingComponent from "../../components/loading/loading.component";
 import { auth, db } from "../../config/firebase.config";
 import { UserContext } from "../../context/user.context";
 import { SignUpContainer, SignUpContent, SignUpHeadline, SignUpInputContainer } from "./sign-up.style";
@@ -25,6 +26,7 @@ const FILogin = FiLogIn as React.ElementType;
 
 const SignUpPage = () => {
     const { isAuthenticated } = useContext(UserContext);
+    const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate();
 
@@ -45,6 +47,7 @@ const SignUpPage = () => {
 
     const handleSubmitPress = async (data: SignUpForm) => {
         try {
+            setIsLoading(true);
             const userCredentials = await createUserWithEmailAndPassword(auth, data.email, data.password);
 
             await addDoc(collection(db, "users"), {
@@ -59,10 +62,13 @@ const SignUpPage = () => {
             if (_error.code === AuthErrorCodes.EMAIL_EXISTS) {
                 return setError("email", { type: "alreadyInUse" });
             }
+        } finally {
+            setIsLoading(false);
         }
     };
     return (
         <>
+            {isLoading && <LoadingComponent />}
             <SignUpContainer>
                 <SignUpContent>
                     <SignUpHeadline>Crie sua conta</SignUpHeadline>
