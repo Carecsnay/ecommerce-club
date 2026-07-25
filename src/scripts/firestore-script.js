@@ -1,7 +1,6 @@
 import "dotenv/config";
 import { initializeApp } from "firebase/app";
-import { addDoc, collection, getFirestore } from "firebase/firestore";
-
+import { doc, getFirestore, setDoc } from "firebase/firestore";
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
     authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
@@ -481,7 +480,7 @@ const categories = [
                 name: "Maiô Engana-Mamãe Tropical",
                 price: 210,
                 imageUrl:
-                    "https://images.unsplash.com/photo-1582639510494-c80b5172b05f?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+                    "https://images.unsplash.com/photo-1571513722275-4b41940f54b8?auto=format&fit=crop&w=687&q=80",
             },
             {
                 id: "praia-003",
@@ -502,7 +501,7 @@ const categories = [
                 name: "Chapéu de Palha praiano",
                 price: 95,
                 imageUrl:
-                    "https://images.unsplash.com/photo-1521335629791-ce4aec67dd1c?ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
+                    "https://images.unsplash.com/photo-1518061124653-4b85d51931f1?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
             },
         ],
     },
@@ -554,7 +553,7 @@ const categories = [
 const main = async () => {
     await Promise.all(
         categories.map(async (category) => {
-            await addDoc(collection(db, "categories"), category);
+            await setDoc(doc(db, "categories", category.id), category);
         }),
     );
 };
