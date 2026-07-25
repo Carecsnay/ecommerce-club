@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { CategoryContext } from "../../context/categorie.context";
+import CategoryOverview from "../category-overview/category-overview.component";
 import { Container } from "./categories.overview.style";
 
 const CategoriesOverview = () => {
@@ -10,7 +11,7 @@ const CategoriesOverview = () => {
         <>
             <Container>
                 {categories.map((category) => (
-                    <p key={category.id}>{category.displayName}</p>
+                    <CategoryOverview key={category.id} category={category} />
                 ))}
             </Container>
         </>
