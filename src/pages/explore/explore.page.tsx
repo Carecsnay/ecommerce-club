@@ -1,4 +1,4 @@
-import CategoriesOverview from "../../components/categories-overview/categories.overview.component";
+import CategoriesOverview from "../../components/categories-overview/categories-overview.component";
 
 const ExplorePage = () => {
     return (

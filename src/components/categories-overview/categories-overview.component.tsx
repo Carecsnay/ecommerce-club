@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { CategoryContext } from "../../context/categorie.context";
 import CategoryOverview from "../category-overview/category-overview.component";
-import { Container } from "./categories.overview.style";
+import { Container } from "./categories-overview.style";
 
 const CategoriesOverview = () => {
     // const [isLoading, setIsLoading] = useState(false);

@@ -9,7 +9,7 @@ import { isEmail } from "validator";
 
 import CustomButton from "../../components/custom-button/custom-button.component";
 import CustomInput from "../../components/custom-input/custom-input.component";
-import InputErrorMessage from "../../components/input-error-message/input.error.message";
+import InputErrorMessage from "../../components/input-error-message/input-error.message";
 import LoadingComponent from "../../components/loading/loading.component";
 import { auth, db, googleProvider } from "../../config/firebase.config";
 import { UserContext } from "../../context/user.context";

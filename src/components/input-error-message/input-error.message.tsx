@@ -1,5 +1,5 @@
 import { FunctionComponent } from "react";
-import { InputErrorMessageContainer } from "./input.error.message.style";
+import { InputErrorMessageContainer } from "./input-error.message.style";
 
 interface InputErrorMessageProps {
     children: React.ReactNode;
