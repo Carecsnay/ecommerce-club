@@ -7,16 +7,34 @@ interface ProductImageProps {
 export const ProductContainer = styled.div`
     display: flex;
     flex-direction: column;
+    width: 300px;
 `;
 
 export const ProductInfo = styled.div`
     display: flex;
     justify-content: space-between;
+    align-items: center;
     margin-top: 5px;
+    width: 100%;
 
     p {
         font-size: 1rem;
         font-weight: 500;
+    }
+
+    /* Nome do produto */
+    p:first-child {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin-right: 8px;
+        min-width: 0;
+    }
+
+    /* Preço do produto */
+    p:last-child {
+        white-space: nowrap;
+        flex-shrink: 0;
     }
 `;
 
