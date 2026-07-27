@@ -14,9 +14,10 @@ export const CategoryTitle = styled.p`
     border-radius: 10px;
     padding: 5px 10px 5px 10px;
     margin-bottom: 15px;
-    text-align: center;
+    text-align: start;
     font-size: 21px;
     font-weight: 500;
+    padding: 10px 15px;
 `;
 
 export const ProductsContainer = styled.div`

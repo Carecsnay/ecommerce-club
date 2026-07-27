@@ -9,6 +9,7 @@ import LoadingComponent from "./components/loading/loading.component";
 import { auth, db } from "./config/firebase.config";
 import { UserContext } from "./context/user.context";
 import { userConverter } from "./converter/firestore.converter";
+import CategoriesDetailsPage from "./pages/categories-details/categories-details.page";
 import ExplorePage from "./pages/explore/explore.page";
 import HomePage from "./pages/home/home.page";
 import LoginPage from "./pages/login/login.page";
@@ -47,8 +48,6 @@ function App() {
         return () => unsubscribe();
     }, [isAuthenticated, loginUser, logoutUser]);
 
-    // console.log("Status de autenticação:", isAuthenticated);
-
     if (isInitializing) return <LoadingComponent />;
 
     return (
@@ -59,6 +58,7 @@ function App() {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/sign-up" element={<SignUpPage />} />
                 <Route path="/explore" element={<ExplorePage />} />
+                <Route path="/category/:id" element={<CategoriesDetailsPage />} />
             </Routes>
         </BrowserRouter>
     );
