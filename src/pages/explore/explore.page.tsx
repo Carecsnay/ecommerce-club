@@ -3,7 +3,7 @@ import CategoriesOverview from "../../components/categories-overview/categories-
 const ExplorePage = () => {
     return (
         <>
-            <CategoriesOverview></CategoriesOverview>
+            <CategoriesOverview />
         </>
     );
 };

@@ -59,7 +59,6 @@ const CategoriesDetailsComponent = ({ categoryId }: CategoriesDetailsProps) => {
                         <p>Explorar {category?.displayName}</p>
                     </CategoryTitle>
                 </CategoryHeader>
-
                 <ProductsContainer>
                     {category?.products.map((product) => (
                         <ProductItem key={product.id} product={product} />

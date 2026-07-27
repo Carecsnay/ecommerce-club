@@ -22,7 +22,7 @@ const CartContextProvider = ({ children }: CartContextProviderProps) => {
     };
     return (
         <>
-            <CartContext.Provider value={{ isVisible, products, toggleCart }}>{children}</CartContext.Provider>;
+            <CartContext.Provider value={{ isVisible, products, toggleCart }}>{children}</CartContext.Provider>
         </>
     );
 };
