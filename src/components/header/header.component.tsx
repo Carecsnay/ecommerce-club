@@ -4,6 +4,7 @@ import { BsCart } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
 import { auth } from "../../config/firebase.config";
+import { CartContext } from "../../context/cart.context";
 import { UserContext } from "../../context/user.context";
 import { HeaderContainer, HeaderItem, HeaderItems, HeaderTitle } from "./header.style";
 
@@ -11,6 +12,7 @@ const Header = () => {
     const navigate = useNavigate();
 
     const { isAuthenticated } = useContext(UserContext);
+    const { toggleCart } = useContext(CartContext);
 
     const handleLoginClick = () => {
         navigate("/login");
@@ -72,9 +74,13 @@ const Header = () => {
                             <span>Logout</span>
                         </HeaderItem>
                     )}
-                    <HeaderItem>
-                        <BsCart size={25} />
-                        <p style={{ marginLeft: 5 }}>5</p>
+                    <HeaderItem onClick={toggleCart}>
+                        <span>
+                            <BsCart size={25} />
+                        </span>
+                        <span>
+                            <p style={{ marginLeft: 5 }}>5</p>
+                        </span>
                     </HeaderItem>
                 </HeaderItems>
             </HeaderItem>
