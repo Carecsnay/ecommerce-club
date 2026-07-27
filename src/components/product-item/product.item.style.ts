@@ -14,7 +14,7 @@ export const ProductInfo = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 5px;
+    margin: 4px auto 10px auto;
     width: 100%;
 
     p {

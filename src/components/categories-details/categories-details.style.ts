@@ -9,7 +9,8 @@ export const Container = styled.div`
 
 export const CategoryHeader = styled.div`
     display: flex;
-    align-items: stretch;
+    align-items: center;
+    justify-content: center;
     gap: 10px;
     margin-top: 20px;
     width: 100%;
@@ -19,11 +20,10 @@ export const IconContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-
+    padding: 15px;
     background-color: ${Colors.background.dark};
     color: ${Colors.text.white};
     border-radius: 10px;
-    padding: 15px;
 
     &:hover {
         cursor: pointer;
@@ -35,12 +35,11 @@ export const CategoryTitle = styled.div`
     background-color: ${Colors.background.dark};
     color: ${Colors.text.white};
     border-radius: 10px;
-    padding: 0 16px;
-
-    width: calc(100% - 75px);
-
-    display: flex;
-    align-items: center;
+    text-align: start;
+    font-size: 21px;
+    width: 100%;
+    font-weight: 500;
+    padding: 10px 15px;
 
     p {
         font-size: 21px;
@@ -51,6 +50,7 @@ export const CategoryTitle = styled.div`
 export const ProductsContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
+    gap: 23px;
     margin-top: 15px;
+    overflow-x: hidden;
 `;

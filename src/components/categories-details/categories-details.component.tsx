@@ -10,6 +10,7 @@ import LoadingComponent from "../loading/loading.component";
 import ProductItem from "../product-item/product-item.component";
 import { CategoryHeader, CategoryTitle, Container, IconContainer, ProductsContainer } from "./categories-details.style";
 
+
 interface CategoriesDetailsProps {
     categoryId: string;
 }
