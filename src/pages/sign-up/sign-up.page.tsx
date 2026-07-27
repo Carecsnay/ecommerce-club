@@ -22,8 +22,6 @@ interface SignUpForm {
     passwordConfirmation: string;
 }
 
-const FILogin = FiLogIn as React.ElementType;
-
 const SignUpPage = () => {
     const { isAuthenticated } = useContext(UserContext);
     const [isLoading, setIsLoading] = useState(false);
@@ -174,7 +172,7 @@ const SignUpPage = () => {
                     <CustomButton
                         name="Criar Conta"
                         onClick={() => handleSubmit(handleSubmitPress)()}
-                        icon={<FILogin size={18} />}
+                        icon={<FiLogIn size={18} />}
                     ></CustomButton>
                 </SignUpContent>
             </SignUpContainer>

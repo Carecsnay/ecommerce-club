@@ -10,8 +10,6 @@ import LoadingComponent from "../loading/loading.component";
 import ProductItem from "../product-item/product-item.component";
 import { CategoryHeader, CategoryTitle, Container, IconContainer, ProductsContainer } from "./categories-details.style";
 
-const FAChevronLeft = FaChevronLeft as React.ElementType;
-
 interface CategoriesDetailsProps {
     categoryId: string;
 }
@@ -53,7 +51,7 @@ const CategoriesDetailsComponent = ({ categoryId }: CategoriesDetailsProps) => {
                             handleIconClick();
                         }}
                     >
-                        <FAChevronLeft size={20} />
+                        <FaChevronLeft size={20} />
                     </IconContainer>
 
                     <CategoryTitle>

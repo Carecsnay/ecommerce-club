@@ -1,5 +1,5 @@
 import { signOut } from "firebase/auth";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { BsCart } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 
@@ -8,7 +8,6 @@ import { UserContext } from "../../context/user.context";
 import { HeaderContainer, HeaderItem, HeaderItems, HeaderTitle } from "./header.style";
 
 const Header = () => {
-    const IconeCarrinho = BsCart as React.ElementType;
     const navigate = useNavigate();
 
     const { isAuthenticated } = useContext(UserContext);
@@ -74,7 +73,7 @@ const Header = () => {
                         </HeaderItem>
                     )}
                     <HeaderItem>
-                        <IconeCarrinho size={25} />
+                        <BsCart size={25} />
                         <p style={{ marginLeft: 5 }}>5</p>
                     </HeaderItem>
                 </HeaderItems>

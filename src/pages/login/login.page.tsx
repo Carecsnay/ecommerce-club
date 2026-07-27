@@ -20,9 +20,6 @@ interface LoginPageForm {
     password: string;
 }
 
-const BSGoogle = BsGoogle as React.ElementType;
-const FILogin = CiLogin as React.ElementType;
-
 const LoginPage = () => {
     const {
         register,
@@ -99,7 +96,7 @@ const LoginPage = () => {
                     <LoginHeadline>Entre com a sua conta</LoginHeadline>
                     <CustomButton
                         name="Entrar com a conta google"
-                        icon={<BSGoogle size={22} />}
+                        icon={<BsGoogle size={22} />}
                         onClick={() => {
                             handleSignInWithGooglePress();
                         }}
@@ -149,7 +146,7 @@ const LoginPage = () => {
                     </LoginInputContainer>
                     <CustomButton
                         name="Entrar"
-                        icon={<FILogin size={25} />}
+                        icon={<CiLogin size={25} />}
                         onClick={() => {
                             handleSubmit(handleSubmitPress)();
                         }}
