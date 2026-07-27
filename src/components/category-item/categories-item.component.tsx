@@ -1,5 +1,6 @@
 import { FunctionComponent } from "react";
 import { useNavigate } from "react-router-dom";
+
 import Category from "../../types/category.type";
 import { CategoryItemContainer, CategoryName } from "./categories-item.style";
 

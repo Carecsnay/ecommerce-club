@@ -2,6 +2,7 @@ import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
 import { FaChevronLeft } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
+
 import { db } from "../../config/firebase.config";
 import { categoryConverter } from "../../converter/firestore.converter";
 import Category from "../../types/category.type";

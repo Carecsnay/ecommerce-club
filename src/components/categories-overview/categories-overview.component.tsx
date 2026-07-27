@@ -4,7 +4,6 @@ import CategoryOverview from "../category-overview/category-overview.component";
 import { Container } from "./categories-overview.style";
 
 const CategoriesOverview = () => {
-    // const [isLoading, setIsLoading] = useState(false);
 
     const { categories } = useContext(CategoryContext);
     return (

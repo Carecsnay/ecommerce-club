@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+
 import CategoriesDetailsComponent from "../../components/categories-details/categories-details.component";
 
 const CategoriesDetailsPage = () => {
