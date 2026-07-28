@@ -25,7 +25,18 @@ const CartContextProvider = ({ children }: CartContextProviderProps) => {
     const [products, setProducts] = useState<CartProduct[]>([]);
 
     const addProductToCart = (product: Product) => {
-        setProducts((prevStage) => [...prevStage, { ...product, quantity: 1 }]);
+        //Verificar se o produto já está no carrinho por meio do ID
+        const productItsExists = products.some((item) => item.id === product.id);
+
+        //Se o produto existir aumentamos somente sua quantidade
+        if (productItsExists) {
+            return setProducts((products) =>
+                products.map((item) => (item.id === product.id ? { ...item, quantity: item.quantity + 1 } : item)),
+            );
+        }
+
+        //Se não adiciona o novo item a lista
+        setProducts((prevState) => [...prevState, { ...product, quantity: 1 }]);
     };
 
     const toggleCart = () => {
