@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { FaCartShopping } from "react-icons/fa6";
-import { CartContext } from "../context/cart.context";
+import { CartContext } from "../../context/cart.context";
+import CustomButton from "../custom-button/custom-button.component";
 import { CartContainer, CartContent, CartEscapeArea, CartTitle, CartTotal } from "./cart.style";
-import CustomButton from "./custom-button/custom-button.component";
 
 const Cart = () => {
     const { isVisible, toggleCart } = useContext(CartContext);

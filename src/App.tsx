@@ -4,7 +4,7 @@ import { useContext, useEffect, useState } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 
-import Cart from "./components/cart.component";
+import Cart from "./components/cart/cart.component";
 import Header from "./components/header/header.component";
 import LoadingComponent from "./components/loading/loading.component";
 import { auth, db } from "./config/firebase.config";
