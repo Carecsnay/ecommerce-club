@@ -12,6 +12,8 @@ interface ICartContext {
     toggleCart: () => void;
     addProductToCart: (product: Product) => void;
     remProductToCart: (productId: string) => void;
+    incProductQuantity: (productId: string) => void;
+    decProductQuantity: (productId: string) => void;
 }
 
 export const CartContext = createContext<ICartContext>({
@@ -20,6 +22,8 @@ export const CartContext = createContext<ICartContext>({
     toggleCart: () => {},
     addProductToCart: () => {},
     remProductToCart: () => {},
+    incProductQuantity: () => {},
+    decProductQuantity: () => {},
 });
 
 const CartContextProvider = ({ children }: CartContextProviderProps) => {
@@ -45,12 +49,32 @@ const CartContextProvider = ({ children }: CartContextProviderProps) => {
         setProducts((products) => products.filter((product) => product.id !== productId));
     };
 
+    const incProductQuantity = (productId: string) => {
+        setProducts((products) =>
+            products.map((product) =>
+                product.id === productId ? { ...product, quantity: product.quantity + 1 } : product,
+            ),
+        );
+    };
+
+    const decProductQuantity = (productId: string) => {};
+
     const toggleCart = () => {
         setVisible((prevState) => !prevState);
     };
     return (
         <>
-            <CartContext.Provider value={{ isVisible, products, toggleCart, addProductToCart, remProductToCart }}>
+            <CartContext.Provider
+                value={{
+                    isVisible,
+                    products,
+                    toggleCart,
+                    addProductToCart,
+                    remProductToCart,
+                    incProductQuantity,
+                    decProductQuantity,
+                }}
+            >
                 {children}
             </CartContext.Provider>
         </>
