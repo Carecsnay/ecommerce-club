@@ -7,7 +7,7 @@ import CustomButton from "./custom-button/custom-button.component";
 const Cart = () => {
     const { isVisible, toggleCart } = useContext(CartContext);
     return (
-        <CartContainer isVisible={isVisible}>
+        <CartContainer $isVisible={isVisible}>
             <CartEscapeArea onClick={toggleCart} />
             <CartContent>
                 <CartTitle>Seu Carrinho</CartTitle>
