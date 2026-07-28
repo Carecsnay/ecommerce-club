@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { BsCartPlus } from "react-icons/bs";
+
 import { CartContext } from "../../context/cart.context";
 import Product from "../../types/products.type";
 import CustomButton from "../custom-button/custom-button.component";

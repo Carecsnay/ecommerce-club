@@ -1,4 +1,5 @@
 import { AiOutlineClose, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+
 import CartProduct from "../../types/cart.type";
 import { CartItemContainer, CartItemImage, CartItemInfo, CartItemQuantity, RemoveButton } from "./cart-item.style";
 

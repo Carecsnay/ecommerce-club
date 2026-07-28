@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { FaCartShopping } from "react-icons/fa6";
+
 import { CartContext } from "../../context/cart.context";
 import CartItem from "../cart-item/cart-item.component";
 import CustomButton from "../custom-button/custom-button.component";

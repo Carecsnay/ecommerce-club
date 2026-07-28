@@ -1,4 +1,5 @@
 import { BeatLoader } from "react-spinners";
+
 import { LoadingContainer } from "./loading.style";
 
 const LoadingComponent = () => {
