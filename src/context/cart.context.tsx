@@ -57,7 +57,13 @@ const CartContextProvider = ({ children }: CartContextProviderProps) => {
         );
     };
 
-    const decProductQuantity = (productId: string) => {};
+    const decProductQuantity = (productId: string) => {
+        setProducts((products) =>
+            products
+                .map((product) => (product.id === productId ? { ...product, quantity: product.quantity - 1 } : product))
+                .filter((product) => product.quantity > 0),
+        );
+    };
 
     const toggleCart = () => {
         setVisible((prevState) => !prevState);

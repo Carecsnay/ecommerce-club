@@ -10,7 +10,7 @@ interface CartItemProps {
 }
 
 const CartItem = ({ product }: CartItemProps) => {
-    const { remProductToCart, incProductQuantity } = useContext(CartContext);
+    const { remProductToCart, incProductQuantity, decProductQuantity } = useContext(CartContext);
     const handleRemProductClick = () => {
         remProductToCart(product.id);
     };
@@ -18,6 +18,11 @@ const CartItem = ({ product }: CartItemProps) => {
     const handleIncProductClick = () => {
         incProductQuantity(product.id);
     };
+
+    const handleDecProductClick = () => {
+        decProductQuantity(product.id);
+    };
+
     return (
         <CartItemContainer>
             <CartItemImage $imageUrl={product.imageUrl} />
@@ -25,7 +30,7 @@ const CartItem = ({ product }: CartItemProps) => {
                 <p>{product.name}</p>
                 <p>R${product.price}</p>
                 <CartItemQuantity>
-                    <AiOutlineMinus size={16} />
+                    <AiOutlineMinus size={16} onClick={handleDecProductClick} />
                     <p>{product.quantity}</p>
                     <AiOutlinePlus size={16} onClick={handleIncProductClick} />
                 </CartItemQuantity>
