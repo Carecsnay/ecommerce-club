@@ -59,9 +59,9 @@ export const CartItemQuantity = styled.div`
 `;
 
 export const RemoveButton = styled.div`
-    margin-right: 20px;
-
+    margin-right: 10px;
     &:hover {
         cursor: pointer;
+        color: red;
     }
 `;
