@@ -29,6 +29,8 @@ const Header = () => {
     const handleExploreClick = () => {
         navigate("/explore");
     };
+    const { productsCount } = useContext(CartContext);
+
     return (
         <HeaderContainer>
             <HeaderTitle
@@ -79,7 +81,7 @@ const Header = () => {
                             <BsCart size={25} />
                         </span>
                         <span>
-                            <p style={{ marginLeft: 5 }}>5</p>
+                            <p style={{ marginLeft: 5 }}>{productsCount}</p>
                         </span>
                     </HeaderItem>
                 </HeaderItems>

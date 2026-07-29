@@ -9,6 +9,7 @@ interface CartContextProviderProps {
 interface ICartContext {
     isVisible: boolean;
     productsTotalPrice: number;
+    productsCount: number;
     products: CartProduct[];
     toggleCart: () => void;
     addProductToCart: (product: Product) => void;
@@ -20,6 +21,7 @@ interface ICartContext {
 export const CartContext = createContext<ICartContext>({
     isVisible: false,
     productsTotalPrice: 0,
+    productsCount: 0,
     products: [],
     toggleCart: () => {},
     addProductToCart: () => {},
@@ -31,6 +33,12 @@ export const CartContext = createContext<ICartContext>({
 const CartContextProvider = ({ children }: CartContextProviderProps) => {
     const [isVisible, setVisible] = useState(false);
     const [products, setProducts] = useState<CartProduct[]>([]);
+
+    const productsCount = useMemo(() => {
+        return products.reduce((accumulator, currentProduct) => {
+            return accumulator + currentProduct.quantity;
+        }, 0);
+    }, [products]);
 
     //recalcula o total dos produtos somente quando a dependencia produtos mudar.
     const productsTotalPrice = useMemo(() => {
@@ -82,6 +90,7 @@ const CartContextProvider = ({ children }: CartContextProviderProps) => {
             <CartContext.Provider
                 value={{
                     isVisible,
+                    productsCount,
                     productsTotalPrice,
                     products,
                     toggleCart,
