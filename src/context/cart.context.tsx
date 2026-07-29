@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from "react";
+import { createContext, ReactNode, useMemo, useState } from "react";
 import CartProduct from "../types/cart.type";
 import Product from "../types/products.type";
 
@@ -8,6 +8,7 @@ interface CartContextProviderProps {
 
 interface ICartContext {
     isVisible: boolean;
+    productsTotalPrice: number;
     products: CartProduct[];
     toggleCart: () => void;
     addProductToCart: (product: Product) => void;
@@ -18,6 +19,7 @@ interface ICartContext {
 
 export const CartContext = createContext<ICartContext>({
     isVisible: false,
+    productsTotalPrice: 0,
     products: [],
     toggleCart: () => {},
     addProductToCart: () => {},
@@ -29,6 +31,13 @@ export const CartContext = createContext<ICartContext>({
 const CartContextProvider = ({ children }: CartContextProviderProps) => {
     const [isVisible, setVisible] = useState(false);
     const [products, setProducts] = useState<CartProduct[]>([]);
+
+    //recalcula o total dos produtos somente quando a dependencia produtos mudar.
+    const productsTotalPrice = useMemo(() => {
+        return products.reduce((accumulator, currentProduct) => {
+            return accumulator + currentProduct.price * currentProduct.quantity;
+        }, 0);
+    }, [products]);
 
     const addProductToCart = (product: Product) => {
         //Verificar se o produto já está no carrinho por meio do ID
@@ -73,6 +82,7 @@ const CartContextProvider = ({ children }: CartContextProviderProps) => {
             <CartContext.Provider
                 value={{
                     isVisible,
+                    productsTotalPrice,
                     products,
                     toggleCart,
                     addProductToCart,
