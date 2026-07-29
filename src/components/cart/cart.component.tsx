@@ -7,7 +7,7 @@ import CustomButton from "../custom-button/custom-button.component";
 import { CartContainer, CartContent, CartEscapeArea, CartTitle, CartTotal } from "./cart.style";
 
 const Cart = () => {
-    const { isVisible, products, productsTotalPrice, toggleCart } = useContext(CartContext);
+    const { isVisible, products, productsTotalPrice, productsCount, toggleCart } = useContext(CartContext);
     return (
         <CartContainer $isVisible={isVisible}>
             <CartEscapeArea onClick={toggleCart} />
@@ -16,8 +16,11 @@ const Cart = () => {
                 {products.map((product) => (
                     <CartItem key={product.id} product={product} />
                 ))}
-                <CartTotal>R$ {productsTotalPrice}</CartTotal>
-                <CustomButton name="Ir para o Checkout" icon={<FaCartShopping size={12} />}></CustomButton>
+                {productsCount > 0 && <CartTotal>R$ {productsTotalPrice}</CartTotal>}
+                {productsCount > 0 && (
+                    <CustomButton name="Ir para o Checkout" icon={<FaCartShopping size={12} />}></CustomButton>
+                )}
+                {productsCount <= 0 && <p>Seu carrinho está vazio!</p>}
             </CartContent>
         </CartContainer>
     );
