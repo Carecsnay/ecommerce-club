@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { FaCartShopping } from "react-icons/fa6";
 
+import { IoWarningOutline } from "react-icons/io5";
 import { CartContext } from "../../context/cart.context";
 import CartItem from "../cart-item/cart-item.component";
 import CustomButton from "../custom-button/custom-button.component";
@@ -16,11 +17,18 @@ const Cart = () => {
                 {products.map((product) => (
                     <CartItem key={product.id} product={product} />
                 ))}
-                {productsCount > 0 && <CartTotal>R$ {productsTotalPrice}</CartTotal>}
                 {productsCount > 0 && (
-                    <CustomButton name="Ir para o Checkout" icon={<FaCartShopping size={12} />}></CustomButton>
+                    <>
+                        <CartTotal>R$ {productsTotalPrice}</CartTotal>
+                        <CustomButton name="Ir para o Checkout" icon={<FaCartShopping size={12} />}></CustomButton>
+                    </>
                 )}
-                {productsCount <= 0 && <p>Seu carrinho está vazio!</p>}
+                {productsCount <= 0 && (
+                    <span>
+                        <p>⚠️</p>
+                        <p>Seu carrinho está vazio!</p>
+                    </span>
+                )}
             </CartContent>
         </CartContainer>
     );

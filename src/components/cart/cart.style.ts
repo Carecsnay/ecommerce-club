@@ -36,7 +36,22 @@ export const CartContent = styled.div`
     background-color: white;
     padding: 20px;
     overflow-y: scroll;
+
+    & span {
+        display: flex;
+        align-items: center;
+    }
+
+    & span p:nth-child(1) {
+        font-size: 30px;
+    }
+
+    & span p:nth-child(2) {
+        color: red;
+        margin-left: 5px;
+    }
 `;
+
 export const CartTitle = styled.p`
     font-size: 1.325rem;
     font-weight: 600;
