@@ -3,6 +3,7 @@ import { BsCartPlus } from "react-icons/bs";
 
 import { CartContext } from "../../context/cart.context";
 import Product from "../../types/products.type";
+import { formatCurrency } from "../../utils/formatCurrency";
 import CustomButton from "../custom-button/custom-button.component";
 import { ProductContainer, ProductImage, ProductInfo } from "./product.item.style";
 
@@ -27,7 +28,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
                 </ProductImage>
                 <ProductInfo>
                     <p>{product.name}</p>
-                    <p>R$ {product.price}</p>
+                    <p>{formatCurrency(product.price)}</p>
                 </ProductInfo>
             </ProductContainer>
         </>

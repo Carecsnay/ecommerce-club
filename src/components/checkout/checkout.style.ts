@@ -16,6 +16,21 @@ export const CheckoutContainer = styled.div`
     button {
         width: 650px;
     }
+
+    & span {
+        margin-top: 15px;
+        display: flex;
+        align-items: center;
+    }
+
+    & span p:nth-child(1) {
+        font-size: 30px;
+    }
+
+    & span p:nth-child(2) {
+        color: red;
+        margin-left: 5px;
+    }
 `;
 
 export const CheckoutTitle = styled.p`
