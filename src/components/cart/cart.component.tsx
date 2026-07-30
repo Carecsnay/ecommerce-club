@@ -26,8 +26,9 @@ const Cart = () => {
                     <>
                         <CartTotal>R$ {productsTotalPrice}</CartTotal>
                         <CustomButton
+                            onClick={handleCheckoutClick}
                             name="Ir para o Checkout"
-                            icon={<FaCartShopping size={12} onClick={handleCheckoutClick} />}
+                            icon={<FaCartShopping size={12} />}
                         ></CustomButton>
                     </>
                 )}
