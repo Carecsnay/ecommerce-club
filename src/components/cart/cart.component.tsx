@@ -1,13 +1,18 @@
 import { useContext } from "react";
 import { FaCartShopping } from "react-icons/fa6";
 
-import { IoWarningOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 import { CartContext } from "../../context/cart.context";
 import CartItem from "../cart-item/cart-item.component";
 import CustomButton from "../custom-button/custom-button.component";
 import { CartContainer, CartContent, CartEscapeArea, CartTitle, CartTotal } from "./cart.style";
 
 const Cart = () => {
+    const navigate = useNavigate();
+    const handleCheckoutClick = () => {
+        navigate("/checkout");
+    };
+
     const { isVisible, products, productsTotalPrice, productsCount, toggleCart } = useContext(CartContext);
     return (
         <CartContainer $isVisible={isVisible}>
@@ -20,7 +25,10 @@ const Cart = () => {
                 {productsCount > 0 && (
                     <>
                         <CartTotal>R$ {productsTotalPrice}</CartTotal>
-                        <CustomButton name="Ir para o Checkout" icon={<FaCartShopping size={12} />}></CustomButton>
+                        <CustomButton
+                            name="Ir para o Checkout"
+                            icon={<FaCartShopping size={12} onClick={handleCheckoutClick} />}
+                        ></CustomButton>
                     </>
                 )}
                 {productsCount <= 0 && (

@@ -11,6 +11,7 @@ import { auth, db } from "./config/firebase.config";
 import { UserContext } from "./context/user.context";
 import { userConverter } from "./converter/firestore.converter";
 import CategoriesDetailsPage from "./pages/categories-details/categories-details.page";
+import CheckoutPage from "./pages/checkout/checkout.page";
 import ExplorePage from "./pages/explore/explore.page";
 import HomePage from "./pages/home/home.page";
 import LoginPage from "./pages/login/login.page";
@@ -59,6 +60,7 @@ function App() {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/sign-up" element={<SignUpPage />} />
                 <Route path="/explore" element={<ExplorePage />} />
+                <Route path="/checkout" element={<CheckoutPage />} />
                 <Route path="/category/:id" element={<CategoriesDetailsPage />} />
             </Routes>
             <Cart />
