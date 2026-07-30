@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 
 import Cart from "./components/cart/cart.component";
+import Authentication from "./components/guards/Authentication.guard";
 import Header from "./components/header/header.component";
 import LoadingComponent from "./components/loading/loading.component";
 import { auth, db } from "./config/firebase.config";
@@ -60,7 +61,14 @@ function App() {
                 <Route path="/login" element={<LoginPage />} />
                 <Route path="/sign-up" element={<SignUpPage />} />
                 <Route path="/explore" element={<ExplorePage />} />
-                <Route path="/checkout" element={<CheckoutPage />} />
+                <Route
+                    path="/checkout"
+                    element={
+                        <Authentication>
+                            <CheckoutPage />
+                        </Authentication>
+                    }
+                />
                 <Route path="/category/:id" element={<CategoriesDetailsPage />} />
             </Routes>
             <Cart />
