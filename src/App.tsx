@@ -5,7 +5,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 
 import Cart from "./components/cart/cart.component";
-import Authentication from "./components/guards/Authentication.guard";
 import Header from "./components/header/header.component";
 import LoadingComponent from "./components/loading/loading.component";
 import { auth, db } from "./config/firebase.config";
@@ -17,6 +16,7 @@ import ExplorePage from "./pages/explore/explore.page";
 import HomePage from "./pages/home/home.page";
 import LoginPage from "./pages/login/login.page";
 import SignUpPage from "./pages/sign-up/sign-up.page";
+import AuthenticationGuard from "./components/guards/Authentication.guard";
 
 function App() {
     const [isInitializing, setIsInitializing] = useState(true);
@@ -64,9 +64,9 @@ function App() {
                 <Route
                     path="/checkout"
                     element={
-                        <Authentication>
+                        <AuthenticationGuard>
                             <CheckoutPage />
-                        </Authentication>
+                        </AuthenticationGuard>
                     }
                 />
                 <Route path="/category/:id" element={<CategoriesDetailsPage />} />
