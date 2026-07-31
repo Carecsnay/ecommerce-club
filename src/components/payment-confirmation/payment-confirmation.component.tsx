@@ -7,7 +7,7 @@ import { PaymentConfirmationContainer, PaymentConfirmationContent } from "./paym
 
 const PaymentConfirmation = () => {
     const [searchParams] = useSearchParams();
-    const status = searchParams.get("sucess");
+    const status = searchParams.get("success");
     return (
         <>
             <PaymentConfirmationContainer>

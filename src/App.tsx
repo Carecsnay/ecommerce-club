@@ -70,8 +70,8 @@ function App() {
                 />
                 <Route path="/explore" element={<ExplorePage />} />
                 <Route path="/login" element={<LoginPage />} />
+                <Route path="/payment-confirmation" element={<PaymentConfirmationPage />} />
                 <Route path="/sign-up" element={<SignUpPage />} />
-                <Route path="/sign-up" element={<PaymentConfirmationPage />} />
             </Routes>
             <Cart />
         </BrowserRouter>
