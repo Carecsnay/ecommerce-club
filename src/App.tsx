@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./App.css";
 
 import Cart from "./components/cart/cart.component";
+import AuthenticationGuard from "./components/guards/Authentication.guard";
 import Header from "./components/header/header.component";
 import LoadingComponent from "./components/loading/loading.component";
 import { auth, db } from "./config/firebase.config";
@@ -15,8 +16,8 @@ import CheckoutPage from "./pages/checkout/checkout.page";
 import ExplorePage from "./pages/explore/explore.page";
 import HomePage from "./pages/home/home.page";
 import LoginPage from "./pages/login/login.page";
+import PaymentConfirmationPage from "./pages/payment-confirmation/payment-confirmation.page";
 import SignUpPage from "./pages/sign-up/sign-up.page";
-import AuthenticationGuard from "./components/guards/Authentication.guard";
 
 function App() {
     const [isInitializing, setIsInitializing] = useState(true);
@@ -58,9 +59,7 @@ function App() {
             <Header />
             <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/sign-up" element={<SignUpPage />} />
-                <Route path="/explore" element={<ExplorePage />} />
+                <Route path="/category/:id" element={<CategoriesDetailsPage />} />
                 <Route
                     path="/checkout"
                     element={
@@ -69,7 +68,10 @@ function App() {
                         </AuthenticationGuard>
                     }
                 />
-                <Route path="/category/:id" element={<CategoriesDetailsPage />} />
+                <Route path="/explore" element={<ExplorePage />} />
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/sign-up" element={<SignUpPage />} />
+                <Route path="/sign-up" element={<PaymentConfirmationPage />} />
             </Routes>
             <Cart />
         </BrowserRouter>
