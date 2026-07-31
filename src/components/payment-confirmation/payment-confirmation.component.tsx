@@ -1,13 +1,29 @@
-import { AiOutlineCheckCircle, AiOutlineCloseCircle } from "react-icons/ai";
-import { useSearchParams } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { AiOutlineCheckCircle, AiOutlineCloseCircle, AiOutlineHome } from "react-icons/ai";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
+import { CartContext } from "../../context/cart.context";
 import Colors from "../../theme/theme.colors";
 import CustomButton from "../custom-button/custom-button.component";
 import { PaymentConfirmationContainer, PaymentConfirmationContent } from "./payment-confirmation.style";
 
 const PaymentConfirmation = () => {
+    const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const status = searchParams.get("success");
+    const isCanceled = searchParams.get("canceled");
+    const { clearProducts } = useContext(CartContext);
+
+    const handleGotoHomePageClick = () => {
+        navigate("/");
+    };
+
+    useEffect(() => {
+        if (status === "true") {
+            clearProducts();
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [status]);
     return (
         <>
             <PaymentConfirmationContainer>
@@ -19,7 +35,7 @@ const PaymentConfirmation = () => {
                         </>
                     )}
                     <>
-                        {status === "false" && (
+                        {(status === "false" || isCanceled) && (
                             <>
                                 <AiOutlineCloseCircle size={120} color={Colors.error} />
                                 <p>Ocorreu um erro ao finalizar a sua compra. Por favor, tente novamente.</p>
@@ -27,7 +43,11 @@ const PaymentConfirmation = () => {
                         )}
                     </>
 
-                    <CustomButton name="Ir para página inicial" />
+                    <CustomButton
+                        icon={<AiOutlineHome size={20} />}
+                        onClick={handleGotoHomePageClick}
+                        name="Ir para página inicial"
+                    />
                 </PaymentConfirmationContent>
             </PaymentConfirmationContainer>
         </>
