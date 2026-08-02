@@ -1,9 +1,10 @@
 import { combineReducers } from "redux";
-import userReducer from "./reducers/user/user-reducer";
+import userReducer from "./reducers/user/user-reducer"; // Verifique se o caminho do arquivo está correto
 
-const rootReduce = combineReducers({
-    //userReducer: userReducer ou somente userReducer
+const rootReducer = combineReducers({
     userReducer,
 });
 
-export default rootReduce;
+export type RootState = ReturnType<typeof rootReducer>;
+
+export default rootReducer;
