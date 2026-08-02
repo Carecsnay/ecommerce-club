@@ -3,13 +3,14 @@ import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import LoadingComponent from "../loading/loading.component";
+import { useAppSelector } from "../../hooks/redux.hooks";
 
 interface AuthenticationProps {
     children: ReactNode;
 }
 
 const AuthenticationGuard = ({ children }: AuthenticationProps) => {
-    const { isAuthenticated } = useSelector((rootReducer) => {
+    const { isAuthenticated } = useAppSelector((rootReducer) => {
         return rootReducer.userReducer;
     });
     const navigate = useNavigate();
