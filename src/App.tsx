@@ -19,12 +19,13 @@ import LoginPage from "./pages/login/login.page";
 import PaymentConfirmationPage from "./pages/payment-confirmation/payment-confirmation.page";
 import SignUpPage from "./pages/sign-up/sign-up.page";
 import { loginUser, logoutUser } from "./store/reducers/user/user.actions";
+import { useAppSelector } from "./hooks/redux.hooks";
 
 function App() {
     const [isInitializing, setIsInitializing] = useState(true);
     const dispatch = useDispatch();
 
-    const { isAuthenticated } = useSelector((rootReducer: any) => {
+    const { isAuthenticated } = useAppSelector((rootReducer) => {
         return rootReducer.userReducer;
     });
 

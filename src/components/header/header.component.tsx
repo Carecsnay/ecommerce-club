@@ -1,11 +1,12 @@
 import { signOut } from "firebase/auth";
 import { useContext } from "react";
 import { BsCart } from "react-icons/bs";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { auth } from "../../config/firebase.config";
 import { CartContext } from "../../context/cart.context";
+import { useAppSelector } from "../../hooks/redux.hooks";
 import { logoutUser } from "../../store/reducers/user/user.actions";
 import { HeaderContainer, HeaderItem, HeaderItems, HeaderTitle } from "./header.style";
 
@@ -13,7 +14,7 @@ const Header = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
-    const { isAuthenticated } = useSelector((rootReducer: any) => {
+    const { isAuthenticated } = useAppSelector((rootReducer) => {
         return rootReducer.userReducer;
     });
 

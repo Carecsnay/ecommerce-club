@@ -14,6 +14,7 @@ import InputErrorMessage from "../../components/input-error-message/input-error.
 import LoadingComponent from "../../components/loading/loading.component";
 import { auth, db, googleProvider } from "../../config/firebase.config";
 import { LoginContainer, LoginContent, LoginHeadline, LoginInputContainer, LoginSubtitle } from "./login.style";
+import { useAppSelector } from "../../hooks/redux.hooks";
 
 interface LoginPageForm {
     email: string;
@@ -30,7 +31,7 @@ const LoginPage = () => {
 
     const [isLoading, setIsLoading] = useState(false);
 
-    const { isAuthenticated } = useSelector((rootReducer: any) => {
+    const { isAuthenticated } = useAppSelector((rootReducer) => {
         return rootReducer.userReducer;
     });
 

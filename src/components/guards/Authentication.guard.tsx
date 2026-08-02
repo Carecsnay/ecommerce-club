@@ -9,7 +9,7 @@ interface AuthenticationProps {
 }
 
 const AuthenticationGuard = ({ children }: AuthenticationProps) => {
-    const { isAuthenticated } = useSelector((rootReducer: any) => {
+    const { isAuthenticated } = useSelector((rootReducer) => {
         return rootReducer.userReducer;
     });
     const navigate = useNavigate();
