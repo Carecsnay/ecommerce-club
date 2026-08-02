@@ -1,7 +1,7 @@
+import axios from "axios";
 import { useContext, useState } from "react";
 import { BsBagCheck } from "react-icons/bs";
 
-import axios from "axios";
 import { CartContext } from "../../context/cart.context";
 import { formatCurrency } from "../../utils/formatCurrency";
 import CartItem from "../cart-item/cart-item.component";
