@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 import { auth } from "../../config/firebase.config";
 import { CartContext } from "../../context/cart.context";
+import { logoutUser } from "../../store/reducers/user/user.actions";
 import { HeaderContainer, HeaderItem, HeaderItems, HeaderTitle } from "./header.style";
 
 const Header = () => {
@@ -35,7 +36,7 @@ const Header = () => {
     };
 
     const handleSignOutClick = async () => {
-        dispatch({ type: "LOGOUT_USER" });
+        dispatch(logoutUser());
     };
 
     const { productsCount } = useContext(CartContext);
