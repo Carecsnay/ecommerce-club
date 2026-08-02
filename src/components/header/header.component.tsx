@@ -1,17 +1,21 @@
 import { signOut } from "firebase/auth";
 import { useContext } from "react";
 import { BsCart } from "react-icons/bs";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { auth } from "../../config/firebase.config";
 import { CartContext } from "../../context/cart.context";
-import { UserContext } from "../../context/user.context";
 import { HeaderContainer, HeaderItem, HeaderItems, HeaderTitle } from "./header.style";
 
 const Header = () => {
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
-    const { isAuthenticated } = useContext(UserContext);
+    const { isAuthenticated } = useSelector((rootReducer: any) => {
+        return rootReducer.userReducer;
+    });
+
     const { toggleCart } = useContext(CartContext);
 
     const handleLoginClick = () => {
@@ -29,6 +33,11 @@ const Header = () => {
     const handleExploreClick = () => {
         navigate("/explore");
     };
+
+    const handleSignOutClick = async () => {
+        dispatch({ type: "LOGOUT_USER" });
+    };
+
     const { productsCount } = useContext(CartContext);
 
     return (
@@ -71,6 +80,7 @@ const Header = () => {
                         <HeaderItem
                             onClick={() => {
                                 signOut(auth);
+                                handleSignOutClick();
                             }}
                         >
                             <span>Logout</span>

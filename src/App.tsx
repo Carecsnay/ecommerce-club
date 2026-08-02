@@ -1,15 +1,15 @@
 import { onAuthStateChanged } from "firebase/auth";
 import { collection, getDocs, query, where } from "firebase/firestore";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import "./App.css";
 
+import "./App.css";
 import Cart from "./components/cart/cart.component";
 import AuthenticationGuard from "./components/guards/Authentication.guard";
 import Header from "./components/header/header.component";
 import LoadingComponent from "./components/loading/loading.component";
 import { auth, db } from "./config/firebase.config";
-import { UserContext } from "./context/user.context";
 import { userConverter } from "./converter/firestore.converter";
 import CategoriesDetailsPage from "./pages/categories-details/categories-details.page";
 import CheckoutPage from "./pages/checkout/checkout.page";
@@ -21,13 +21,17 @@ import SignUpPage from "./pages/sign-up/sign-up.page";
 
 function App() {
     const [isInitializing, setIsInitializing] = useState(true);
-    const { isAuthenticated, loginUser, logoutUser } = useContext(UserContext);
+    const dispatch = useDispatch();
+    
+    const { isAuthenticated } = useSelector((rootReducer: any) => {
+        return rootReducer.userReducer;
+    });
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, async (user) => {
             if (!user) {
                 if (isAuthenticated) {
-                    logoutUser();
+                    dispatch({ type: "LOGOUT_USER" });
                 }
                 setIsInitializing(false);
                 return;
@@ -39,9 +43,7 @@ function App() {
                 );
                 const userFromFirestore = querySnapshot.docs[0]?.data();
 
-                if (userFromFirestore) {
-                    loginUser(userFromFirestore);
-                }
+                dispatch({ type: "LOGIN_USER", payload: userFromFirestore });
             } catch (error) {
                 console.error("Erro ao buscar dados do usuário no Firestore:", error);
             } finally {
@@ -50,7 +52,8 @@ function App() {
         });
 
         return () => unsubscribe();
-    }, [isAuthenticated, loginUser, logoutUser]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [dispatch]);
 
     if (isInitializing) return <LoadingComponent />;
 

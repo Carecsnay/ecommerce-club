@@ -1,7 +1,8 @@
 //Nosso armazenamento geral do reducer
-import { createStore } from "redux";
+import { applyMiddleware, createStore } from "redux";
+import { logger } from "redux-logger";
 import rootReduce from "./root-reducer";
 
-const store = createStore(rootReduce);
+const store = createStore(rootReduce, applyMiddleware(logger));
 
 export default store;

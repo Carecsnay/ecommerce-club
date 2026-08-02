@@ -1,8 +1,9 @@
 import { AuthError, AuthErrorCodes, createUserWithEmailAndPassword } from "firebase/auth";
 import { addDoc, collection } from "firebase/firestore";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FiLogIn } from "react-icons/fi";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import validator from "validator";
 
@@ -11,7 +12,6 @@ import CustomInput from "../../components/custom-input/custom-input.component";
 import InputErrorMessage from "../../components/input-error-message/input-error.message.component";
 import LoadingComponent from "../../components/loading/loading.component";
 import { auth, db } from "../../config/firebase.config";
-import { UserContext } from "../../context/user.context";
 import { SignUpContainer, SignUpContent, SignUpHeadline, SignUpInputContainer } from "./sign-up.style";
 
 interface SignUpForm {
@@ -23,7 +23,9 @@ interface SignUpForm {
 }
 
 const SignUpPage = () => {
-    const { isAuthenticated } = useContext(UserContext);
+    const { isAuthenticated } = useSelector((rootReducer: any) => {
+        return rootReducer.userReducer;
+    });
     const [isLoading, setIsLoading] = useState(false);
 
     const navigate = useNavigate();

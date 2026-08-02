@@ -1,9 +1,10 @@
 import { AuthError, AuthErrorCodes, signInWithEmailAndPassword, signInWithPopup } from "firebase/auth";
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsGoogle } from "react-icons/bs";
 import { CiLogin } from "react-icons/ci";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { isEmail } from "validator";
 
@@ -12,7 +13,6 @@ import CustomInput from "../../components/custom-input/custom-input.component";
 import InputErrorMessage from "../../components/input-error-message/input-error.message.component";
 import LoadingComponent from "../../components/loading/loading.component";
 import { auth, db, googleProvider } from "../../config/firebase.config";
-import { UserContext } from "../../context/user.context";
 import { LoginContainer, LoginContent, LoginHeadline, LoginInputContainer, LoginSubtitle } from "./login.style";
 
 interface LoginPageForm {
@@ -30,7 +30,9 @@ const LoginPage = () => {
 
     const [isLoading, setIsLoading] = useState(false);
 
-    const { isAuthenticated } = useContext(UserContext);
+    const { isAuthenticated } = useSelector((rootReducer: any) => {
+        return rootReducer.userReducer;
+    });
 
     const navigate = useNavigate();
 
@@ -43,8 +45,7 @@ const LoginPage = () => {
     const handleSubmitPress = async (data: LoginPageForm) => {
         try {
             setIsLoading(true);
-            const userCredentials = await signInWithEmailAndPassword(auth, data.email, data.password);
-            console.log({ userCredentials });
+            await signInWithEmailAndPassword(auth, data.email, data.password);
         } catch (error) {
             const _error = error as AuthError;
 
@@ -81,7 +82,6 @@ const LoginPage = () => {
                     provider: "google",
                 });
             }
-            console.log(user);
         } catch (error) {
             console.log(error);
         } finally {
