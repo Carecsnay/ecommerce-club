@@ -1,7 +1,7 @@
 import { onAuthStateChanged } from "firebase/auth";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import "./App.css";
@@ -11,6 +11,7 @@ import Header from "./components/header/header.component";
 import LoadingComponent from "./components/loading/loading.component";
 import { auth, db } from "./config/firebase.config";
 import { userConverter } from "./converter/firestore.converter";
+import { useAppSelector } from "./hooks/redux.hooks";
 import CategoriesDetailsPage from "./pages/categories-details/categories-details.page";
 import CheckoutPage from "./pages/checkout/checkout.page";
 import ExplorePage from "./pages/explore/explore.page";
@@ -19,7 +20,6 @@ import LoginPage from "./pages/login/login.page";
 import PaymentConfirmationPage from "./pages/payment-confirmation/payment-confirmation.page";
 import SignUpPage from "./pages/sign-up/sign-up.page";
 import { loginUser, logoutUser } from "./store/reducers/user/user.actions";
-import { useAppSelector } from "./hooks/redux.hooks";
 
 function App() {
     const [isInitializing, setIsInitializing] = useState(true);

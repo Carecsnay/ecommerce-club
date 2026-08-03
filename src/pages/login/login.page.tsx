@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { BsGoogle } from "react-icons/bs";
 import { CiLogin } from "react-icons/ci";
-import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { isEmail } from "validator";
 
@@ -13,8 +12,8 @@ import CustomInput from "../../components/custom-input/custom-input.component";
 import InputErrorMessage from "../../components/input-error-message/input-error.message.component";
 import LoadingComponent from "../../components/loading/loading.component";
 import { auth, db, googleProvider } from "../../config/firebase.config";
-import { LoginContainer, LoginContent, LoginHeadline, LoginInputContainer, LoginSubtitle } from "./login.style";
 import { useAppSelector } from "../../hooks/redux.hooks";
+import { LoginContainer, LoginContent, LoginHeadline, LoginInputContainer, LoginSubtitle } from "./login.style";
 
 interface LoginPageForm {
     email: string;
