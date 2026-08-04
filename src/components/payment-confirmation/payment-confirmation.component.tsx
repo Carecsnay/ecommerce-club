@@ -1,8 +1,9 @@
-import { useContext, useEffect } from "react";
+import { useEffect } from "react";
 import { AiOutlineCheckCircle, AiOutlineCloseCircle, AiOutlineHome } from "react-icons/ai";
+import { useDispatch } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
-import { CartContext } from "../../context/cart.context";
+import { clearCartProducts } from "../../store/reducers/cart/cart-actions";
 import Colors from "../../theme/theme.colors";
 import CustomButton from "../custom-button/custom-button.component";
 import { PaymentConfirmationContainer, PaymentConfirmationContent } from "./payment-confirmation.style";
@@ -12,7 +13,7 @@ const PaymentConfirmation = () => {
     const [searchParams] = useSearchParams();
     const status = searchParams.get("success");
     const isCanceled = searchParams.get("canceled");
-    const { clearProducts } = useContext(CartContext);
+    const dispatch = useDispatch();
 
     const handleGotoHomePageClick = () => {
         navigate("/");
@@ -20,7 +21,7 @@ const PaymentConfirmation = () => {
 
     useEffect(() => {
         if (status === "true") {
-            clearProducts();
+            dispatch(clearCartProducts());
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [status]);

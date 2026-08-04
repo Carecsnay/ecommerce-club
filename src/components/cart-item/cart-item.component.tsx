@@ -1,27 +1,32 @@
-import { useContext } from "react";
 import { AiOutlineClose, AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
+import { useDispatch } from "react-redux";
 
-import { CartContext } from "../../context/cart.context";
+import {
+    decCartProductQuantity,
+    incCartProductQuantity,
+    remProductFromCart,
+} from "../../store/reducers/cart/cart-actions";
 import CartProduct from "../../types/cart.type";
-import { CartItemContainer, CartItemImage, CartItemInfo, CartItemQuantity, RemoveButton } from "./cart-item.style";
 import { formatCurrency } from "../../utils/formatCurrency";
+import { CartItemContainer, CartItemImage, CartItemInfo, CartItemQuantity, RemoveButton } from "./cart-item.style";
 
 interface CartItemProps {
     product: CartProduct;
 }
 
 const CartItem = ({ product }: CartItemProps) => {
-    const { remProductToCart, incProductQuantity, decProductQuantity } = useContext(CartContext);
+    const dispatch = useDispatch();
+
     const handleRemProductClick = () => {
-        remProductToCart(product.id);
+        dispatch(remProductFromCart(product.id));
     };
 
     const handleIncProductClick = () => {
-        incProductQuantity(product.id);
+        dispatch(incCartProductQuantity(product.id));
     };
 
     const handleDecProductClick = () => {
-        decProductQuantity(product.id);
+        dispatch(decCartProductQuantity(product.id));
     };
 
     return (

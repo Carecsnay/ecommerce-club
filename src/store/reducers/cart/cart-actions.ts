@@ -10,4 +10,23 @@ export const addProductToCart = (payload: Product) => ({
     payload,
 });
 
+export const remProductFromCart = (payload: string) => ({
+    type: CartActionTypes.remProductFromCart,
+    payload,
+});
+
+export const incCartProductQuantity = (payload: string) => ({
+    type: CartActionTypes.incCartProductQuantity,
+    payload,
+});
+
+export const decCartProductQuantity = (payload: string) => ({
+    type: CartActionTypes.decCartProductQuantity,
+    payload,
+});
+
+export const clearCartProducts = () => ({
+    type: CartActionTypes.clearCartProducts,
+});
+
 export default toggleCart;
