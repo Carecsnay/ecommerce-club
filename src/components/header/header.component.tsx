@@ -1,17 +1,18 @@
 import { signOut } from "firebase/auth";
-import { useContext } from "react";
 import { BsCart } from "react-icons/bs";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { auth } from "../../config/firebase.config";
-import { CartContext } from "../../context/cart.context";
 import { useAppSelector } from "../../hooks/redux.hooks";
 import toggleCart from "../../store/reducers/cart/cart-actions";
+import { selectProductsCount } from "../../store/reducers/cart/cart-selectors";
 import { logoutUser } from "../../store/reducers/user/user.actions";
 import { HeaderContainer, HeaderItem, HeaderItems, HeaderTitle } from "./header.style";
 
 const Header = () => {
+    const productsCount = useAppSelector(selectProductsCount);
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -42,8 +43,6 @@ const Header = () => {
     const handleToggleCartClick = () => {
         dispatch(toggleCart());
     };
-
-    const { productsCount } = useContext(CartContext);
 
     return (
         <HeaderContainer>

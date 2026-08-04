@@ -1,17 +1,19 @@
-import { useContext } from "react";
 import { FaCartShopping } from "react-icons/fa6";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-import { CartContext } from "../../context/cart.context";
 import { useAppSelector } from "../../hooks/redux.hooks";
 import toggleCart from "../../store/reducers/cart/cart-actions";
+import { selectProductsCount, selectProductsTotalPrice } from "../../store/reducers/cart/cart-selectors";
 import { formatCurrency } from "../../utils/formatCurrency";
 import CartItem from "../cart-item/cart-item.component";
 import CustomButton from "../custom-button/custom-button.component";
 import { CartContainer, CartContent, CartEscapeArea, CartTitle, CartTotal } from "./cart.style";
 
 const Cart = () => {
+    const productsTotalPrice = useAppSelector(selectProductsTotalPrice);
+    const productsCount = useAppSelector(selectProductsCount);
+
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -26,7 +28,6 @@ const Cart = () => {
 
     const { isVisible, products } = useAppSelector((state) => state.cartReducer);
 
-    const { productsTotalPrice, productsCount } = useContext(CartContext);
     return (
         <CartContainer $isVisible={isVisible}>
             <CartEscapeArea onClick={handleEscapeAreaClick} />
