@@ -1,6 +1,6 @@
 import { useContext, useEffect } from "react";
 
-import { CategoryContext } from "../../context/categorie.context";
+import { CategoryContext } from "../../context/categories.context";
 import CategoryItem from "../category-item/categories-item.component";
 import LoadingComponent from "../loading/loading.component";
 import { CategoriesContainer, CategoriesContent } from "./categories.style";

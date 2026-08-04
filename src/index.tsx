@@ -4,7 +4,7 @@ import { Provider } from "react-redux";
 import App from "./App";
 
 import CartContextProvider from "./context/cart.context";
-import CategoryContextProvider from "./context/categorie.context";
+import CategoryContextProvider from "./context/categories.context";
 import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import store from "./store/store";

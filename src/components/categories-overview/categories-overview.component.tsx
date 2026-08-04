@@ -1,11 +1,10 @@
 import { useContext } from "react";
 
-import { CategoryContext } from "../../context/categorie.context";
+import { CategoryContext } from "../../context/categories.context";
 import CategoryOverview from "../category-overview/category-overview.component";
 import { Container } from "./categories-overview.style";
 
 const CategoriesOverview = () => {
-
     const { categories } = useContext(CategoryContext);
     return (
         <>
