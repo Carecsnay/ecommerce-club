@@ -1,8 +1,18 @@
 import { applyMiddleware, legacy_createStore as createStore } from "redux";
 import logger from "redux-logger";
+import { persistReducer, persistStore } from "redux-persist";
+import storage from "redux-persist/lib/storage";
 import rootReducer, { RootState } from "./root-reducer";
 
-const store = createStore(rootReducer, applyMiddleware(logger));
+const persistConfig = {
+    key: "root",
+    storage,
+    whitelist: ["cartReducer"],
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer as any);
+
+export const store = createStore(persistedReducer, applyMiddleware(logger));
+export const persistedStore = persistStore(store);
 
 export type { RootState };
-export default store;

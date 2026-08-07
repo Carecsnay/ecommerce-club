@@ -5,6 +5,6 @@ const CartActionTypes = {
     incCartProductQuantity: "cart/incCartProductQuantity",
     decCartProductQuantity: "cart/decCartProductQuantity",
     clearCartProducts: "cart/clearCartProducts",
-};
+} as const;
 
 export default CartActionTypes;
