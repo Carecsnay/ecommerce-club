@@ -1,32 +1,72 @@
 import Product from "../../../types/products.type";
 import CartActionTypes from "./cart-actions.types";
 
-export const toggleCart = () => ({
+interface toggleCartAction {
+    type: typeof CartActionTypes.toggleCart;
+    [key: string]: any;
+}
+
+export const toggleCart = (): toggleCartAction => ({
     type: CartActionTypes.toggleCart,
 });
 
-export const addProductToCart = (payload: Product) => ({
+interface addProductToCartAction {
+    type: typeof CartActionTypes.addProductToCart;
+    payload: Product;
+    [key: string]: any;
+}
+
+export const addProductToCart = (payload: Product): addProductToCartAction => ({
     type: CartActionTypes.addProductToCart,
     payload,
 });
 
-export const remProductFromCart = (payload: string) => ({
+interface remProductFromCartAction {
+    type: typeof CartActionTypes.remProductFromCart;
+    payload: string;
+    [key: string]: any;
+}
+
+export const remProductFromCart = (payload: string): remProductFromCartAction => ({
     type: CartActionTypes.remProductFromCart,
     payload,
 });
 
-export const incCartProductQuantity = (payload: string) => ({
+interface incCartProductQuantityAction {
+    type: typeof CartActionTypes.incCartProductQuantity;
+    payload: string;
+    [key: string]: any;
+}
+
+export const incCartProductQuantity = (payload: string): incCartProductQuantityAction => ({
     type: CartActionTypes.incCartProductQuantity,
     payload,
 });
 
-export const decCartProductQuantity = (payload: string) => ({
+interface decCartProductQuantityAction {
+    type: typeof CartActionTypes.decCartProductQuantity;
+    payload: string;
+    [key: string]: any;
+}
+
+export const decCartProductQuantity = (payload: string): decCartProductQuantityAction => ({
     type: CartActionTypes.decCartProductQuantity,
     payload,
 });
 
-export const clearCartProducts = () => ({
+interface clearCartProductsAction {
+    type: typeof CartActionTypes.clearCartProducts;
+    [key: string]: any;
+}
+
+export const clearCartProducts = (): clearCartProductsAction => ({
     type: CartActionTypes.clearCartProducts,
 });
 
-export default toggleCart;
+export type CartActions =
+    | toggleCartAction
+    | addProductToCartAction
+    | remProductFromCartAction
+    | incCartProductQuantityAction
+    | decCartProductQuantityAction
+    | clearCartProductsAction;
