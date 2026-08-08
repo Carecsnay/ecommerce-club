@@ -19,7 +19,7 @@ import HomePage from "./pages/home/home.page";
 import LoginPage from "./pages/login/login.page";
 import PaymentConfirmationPage from "./pages/payment-confirmation/payment-confirmation.page";
 import SignUpPage from "./pages/sign-up/sign-up.page";
-import { loginUser, logoutUser } from "./store/reducers/user/user.actions";
+import { loginUser, logoutUser } from "./store/toolkit/user/user.slice";
 
 function App() {
     const [isInitializing, setIsInitializing] = useState(true);
