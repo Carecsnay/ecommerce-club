@@ -58,4 +58,46 @@ export const CategoriesContent = styled.div`
     & > div:nth-child(10) {
         grid-area: j;
     }
+
+    @media (max-width: 768px) {
+        display: flex;
+        flex-direction: column;
+        grid-gap: 30px;
+
+        & > div:nth-child(1) {
+            grid-area: a;
+        }
+        & > div:nth-child(2) {
+            grid-area: b;
+        }
+        & > div:nth-child(3) {
+            grid-area: c;
+        }
+        & > div:nth-child(4) {
+            grid-area: d;
+        }
+        & > div:nth-child(5) {
+            grid-area: e;
+        }
+
+        & > div:nth-child(6) {
+            grid-area: f;
+        }
+
+        & > div:nth-child(7) {
+            grid-area: g;
+        }
+
+        & > div:nth-child(8) {
+            grid-area: h;
+        }
+
+        & > div:nth-child(9) {
+            grid-area: i;
+        }
+
+        & > div:nth-child(10) {
+            grid-area: j;
+        }
+    }
 `;

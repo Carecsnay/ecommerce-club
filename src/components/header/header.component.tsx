@@ -46,60 +46,38 @@ const Header = () => {
 
     return (
         <HeaderContainer>
-            <HeaderTitle
-                onClick={() => {
-                    handleHomeClick();
-                }}
-            >
-                Club Clothing
-            </HeaderTitle>
-            <HeaderItem>
-                <HeaderItems>
-                    <HeaderItem
-                        onClick={() => {
-                            handleExploreClick();
-                        }}
-                    >
-                        <span>Explorar</span>
-                    </HeaderItem>
-                    {!isAuthenticated && (
-                        <>
-                            <HeaderItem
-                                onClick={() => {
-                                    handleLoginClick();
-                                }}
-                            >
-                                <span>Login</span>
-                            </HeaderItem>
-                            <HeaderItem
-                                onClick={() => {
-                                    handleSignUpClick();
-                                }}
-                            >
-                                <span>Criar conta</span>
-                            </HeaderItem>
-                        </>
-                    )}
-                    {isAuthenticated && (
-                        <HeaderItem
-                            onClick={() => {
-                                signOut(auth);
-                                handleSignOutClick();
-                            }}
-                        >
-                            <span>Logout</span>
+            <HeaderTitle onClick={handleHomeClick}>Club Clothing</HeaderTitle>
+            <HeaderItems>
+                <HeaderItem onClick={handleExploreClick}>
+                    <span>Explorar</span>
+                </HeaderItem>
+
+                {!isAuthenticated && (
+                    <>
+                        <HeaderItem onClick={handleLoginClick}>
+                            <span>Login</span>
                         </HeaderItem>
-                    )}
-                    <HeaderItem onClick={handleToggleCartClick}>
-                        <span>
-                            <BsCart size={25} />
-                        </span>
-                        <span>
-                            <p style={{ marginLeft: 5 }}>{productsCount}</p>
-                        </span>
+                        <HeaderItem onClick={handleSignUpClick}>
+                            <span>Criar conta</span>
+                        </HeaderItem>
+                    </>
+                )}
+
+                {isAuthenticated && (
+                    <HeaderItem onClick={handleSignOutClick}>
+                        <span>Logout</span>
                     </HeaderItem>
-                </HeaderItems>
-            </HeaderItem>
+                )}
+
+                <HeaderItem onClick={handleToggleCartClick}>
+                    <span>
+                        <BsCart size={25} />
+                    </span>
+                    <span>
+                        <p style={{ marginLeft: 5 }}>{productsCount}</p>
+                    </span>
+                </HeaderItem>
+            </HeaderItems>
         </HeaderContainer>
     );
 };

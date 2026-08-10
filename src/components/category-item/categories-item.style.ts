@@ -22,6 +22,10 @@ export const CategoryItemContainer = styled.div<CategoryItemContainerProps>`
     background-blend-mode: color;
     min-height: 220px;
     background-image: ${(props) => `url('${props.$backgroundImage}')`};
+
+    @media (max-width: 768px) {
+        min-height: 280px
+    }
 `;
 
 export const CategoryName = styled.div`
