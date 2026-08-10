@@ -14,6 +14,10 @@ export const CategoryHeader = styled.div`
     gap: 10px;
     margin-top: 20px;
     width: 100%;
+
+    @media (max-width: 768px) {
+        max-width: 300px;
+    }
 `;
 
 export const IconContainer = styled.div`
@@ -36,13 +40,13 @@ export const CategoryTitle = styled.div`
     color: ${Colors.text.white};
     border-radius: 10px;
     text-align: start;
-    font-size: 21px;
+    font-size: 1.25rem;
     width: 100%;
     font-weight: 500;
     padding: 10px 15px;
 
     p {
-        font-size: 21px;
+        font-size: 1.25rem;
         font-weight: 500;
     }
 `;
@@ -53,4 +57,5 @@ export const ProductsContainer = styled.div`
     gap: 23px;
     margin-top: 15px;
     overflow-x: hidden;
+    justify-items: center;
 `;
