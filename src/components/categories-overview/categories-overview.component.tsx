@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 
 import { useAppSelector } from "../../hooks/redux.hooks";
-import { fetchCategories } from "../../store/reducers/category/category-actions";
+import { fetchCategories } from "../../store/toolkit/category/category.slice";
 import CategoryOverview from "../category-overview/category-overview.component";
 import LoadingComponent from "../loading/loading.component";
 import { Container } from "./categories-overview.style";
