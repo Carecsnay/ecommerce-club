@@ -49,6 +49,21 @@ export const CategoryTitle = styled.div`
         font-size: 1.25rem;
         font-weight: 500;
     }
+
+    @media (max-width: 768px) {
+        p {
+            display: block;
+            min-height: 30px;
+            line-height: 30px;
+            font-size: 1rem;
+            font-weight: 500;
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 210px;
+        }
+    }
 `;
 
 export const ProductsContainer = styled.div`
@@ -57,5 +72,12 @@ export const ProductsContainer = styled.div`
     gap: 23px;
     margin-top: 15px;
     overflow-x: hidden;
-    justify-items: center;
+    width: 100%;
+    & > *:first-child {
+        justify-self: start;
+    }
+
+    & > *:last-child {
+        justify-self: end;
+    }
 `;

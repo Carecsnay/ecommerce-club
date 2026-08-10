@@ -18,14 +18,14 @@ export const CategoryTitle = styled.p`
     border-radius: 10px;
     padding: 5px 10px 5px 10px;
     margin-bottom: 15px;
-    text-align: start;
-    font-size: 21px;
+    text-align: center;
+    font-size: 1.25rem;
     font-weight: 500;
     padding: 10px 15px;
 
     @media (max-width: 768px) {
         text-align: center;
-}
+    }
 `;
 
 export const ProductsContainer = styled.div`
