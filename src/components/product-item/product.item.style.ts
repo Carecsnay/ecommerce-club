@@ -16,6 +16,8 @@ export const ProductInfo = styled.div`
     align-items: center;
     margin: 4px auto 10px auto;
     width: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
 
     p {
         font-size: 1rem;
