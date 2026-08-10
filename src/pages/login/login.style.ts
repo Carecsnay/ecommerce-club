@@ -8,7 +8,8 @@ export const LoginContainer = styled.div`
     justify-content: center;
 
     @media (max-width: 768px) {
-        margin-top: -60px;
+        margin-top: 25px;
+        max-height: 500px;
     }
 `;
 

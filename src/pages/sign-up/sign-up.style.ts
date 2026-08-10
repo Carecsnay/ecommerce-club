@@ -6,6 +6,10 @@ export const SignUpContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 768px) {
+        max-height: 700px;
+    }
 `;
 
 export const SignUpHeadline = styled.p`
