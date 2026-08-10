@@ -28,6 +28,11 @@ export const SignUpContent = styled.div`
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     padding: 40px;
+
+    @media (max-width: 768px) {
+        border: none;
+        box-shadow: none;
+    }
 `;
 
 export const SignUpInputContainer = styled.div`

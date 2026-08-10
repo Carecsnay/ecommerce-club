@@ -6,6 +6,10 @@ export const LoginContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (max-width: 768px) {
+        margin-top: -60px;
+    }
 `;
 
 export const LoginHeadline = styled.p`
@@ -24,6 +28,12 @@ export const LoginContent = styled.div`
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     padding: 40px;
+
+    @media (max-width: 768px) {
+        border: none;
+        box-shadow: none;
+        padding: 30px;
+    }
 `;
 
 export const LoginSubtitle = styled.p`
