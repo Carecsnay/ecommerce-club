@@ -5,7 +5,7 @@ import {
     decCartProductQuantity,
     incCartProductQuantity,
     remProductFromCart,
-} from "../../store/reducers/cart/cart-actions";
+} from "../../store/toolkit/cart/cart.slice";
 import CartProduct from "../../types/cart.type";
 import { formatCurrency } from "../../utils/formatCurrency";
 import { CartItemContainer, CartItemImage, CartItemInfo, CartItemQuantity, RemoveButton } from "./cart-item.style";

@@ -3,7 +3,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
 import { useAppSelector } from "../../hooks/redux.hooks";
-import { toggleCart } from "../../store/reducers/cart/cart-actions";
+import { toggleCart } from "../../store/toolkit/cart/cart.slice";
 import { selectProductsCount, selectProductsTotalPrice } from "../../store/reducers/cart/cart-selectors";
 import { formatCurrency } from "../../utils/formatCurrency";
 import CartItem from "../cart-item/cart-item.component";

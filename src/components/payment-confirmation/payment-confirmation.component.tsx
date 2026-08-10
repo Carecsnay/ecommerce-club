@@ -3,7 +3,7 @@ import { AiOutlineCheckCircle, AiOutlineCloseCircle, AiOutlineHome } from "react
 import { useDispatch } from "react-redux";
 import { useNavigate, useSearchParams } from "react-router-dom";
 
-import { clearCartProducts } from "../../store/reducers/cart/cart-actions";
+import { clearCartProducts } from "../../store/toolkit/cart/cart.slice";
 import Colors from "../../theme/theme.colors";
 import CustomButton from "../custom-button/custom-button.component";
 import { PaymentConfirmationContainer, PaymentConfirmationContent } from "./payment-confirmation.style";
