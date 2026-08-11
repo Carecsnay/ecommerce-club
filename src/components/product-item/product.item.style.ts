@@ -7,7 +7,7 @@ interface ProductImageProps {
 export const ProductContainer = styled.div`
     display: flex;
     flex-direction: column;
-    width: 300px;
+    width: 100%;
 `;
 
 export const ProductInfo = styled.div`
@@ -18,6 +18,7 @@ export const ProductInfo = styled.div`
     width: 100%;
     padding-left: 5px;
     padding-right: 5px;
+    box-sizing: border-box;
 
     p {
         font-size: 1rem;
@@ -42,8 +43,8 @@ export const ProductInfo = styled.div`
 
 export const ProductImage = styled.div<ProductImageProps>`
     background-image: ${(props) => `url('${props.$imageUrl}')`};
-    height: 380px;
-    width: 300px;
+    height: 480px;
+    width: 100%;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -55,6 +56,9 @@ export const ProductImage = styled.div<ProductImageProps>`
     background-color: transparent;
     background-blend-mode: color;
 
+    @media (max-width: 768px) {
+        height: 480px;
+    }
     button {
         visibility: hidden;
         opacity: 0;
