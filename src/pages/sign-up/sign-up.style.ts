@@ -21,6 +21,11 @@ export const SignUpHeadline = styled.p`
     border-bottom: 1px solid #6c757d;
     width: 100%;
     text-align: center;
+
+    @media (max-width: 1368px) {
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+    }
 `;
 
 export const SignUpContent = styled.div`
@@ -32,6 +37,12 @@ export const SignUpContent = styled.div`
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 10px;
     padding: 40px;
+
+    @media (max-width: 1368px) {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        margin: 20px;
+    }
 
     @media (max-width: 768px) {
         border: none;

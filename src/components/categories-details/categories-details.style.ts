@@ -7,7 +7,7 @@ export const Container = styled.div`
     box-sizing: border-box;
 
     @media (max-width: 768px) {
-        padding: 0px 40px 20px 40px;
+        padding: 0px 25px 20px 25px;
     }
 `;
 
@@ -76,14 +76,14 @@ export const ProductsContainer = styled.div`
     width: 100%;
     box-sizing: border-box;
 
-    @media (max-width: 1200px) {
-        grid-template-columns: repeat(3, 1fr);
+    @media (max-width: 1368px) {
+        grid-template-columns: repeat(4, 1fr);
         gap: 20px;
     }
 
-    @media (max-width: 768px) {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 16px;
+    @media (max-width: 1200px) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
     }
 
     @media (max-width: 480px) {

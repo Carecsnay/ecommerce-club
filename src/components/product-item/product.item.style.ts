@@ -8,6 +8,15 @@ export const ProductContainer = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
+
+
+    @media (max-width: 1368px) {
+        width: 300px;
+    }
+
+    @media (max-width: 768px) {
+        width: 100%;
+    }
 `;
 
 export const ProductInfo = styled.div`
@@ -56,9 +65,6 @@ export const ProductImage = styled.div<ProductImageProps>`
     background-color: transparent;
     background-blend-mode: color;
 
-    @media (max-width: 768px) {
-        height: 480px;
-    }
     button {
         visibility: hidden;
         opacity: 0;
