@@ -41,6 +41,9 @@ export const CartItemInfo = styled.div`
     p:nth-child(2) {
         font-weight: 500;
     }
+    @media (max-width: 768px) {
+        font-size: 0.85rem;
+    }
 `;
 
 export const CartItemQuantity = styled.div`
@@ -63,5 +66,9 @@ export const RemoveButton = styled.div`
     &:hover {
         cursor: pointer;
         color: red;
+    }
+
+    @media (max-width: 768px) {
+        margin: 0;
     }
 `;

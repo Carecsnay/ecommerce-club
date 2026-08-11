@@ -23,6 +23,11 @@ export const CartContainer = styled.div<CartContainerPros>`
     p {
         color: ${Colors.text.black};
     }
+
+    @media (max-width: 768px) {
+        height: 100vh;
+        width: 100vw;
+    }
 `;
 
 export const CartEscapeArea = styled.div`
@@ -49,6 +54,11 @@ export const CartContent = styled.div`
     & span p:nth-child(2) {
         color: red;
         margin-left: 5px;
+    }
+
+    @media (max-width: 768px) {
+        min-width: 85%;
+        padding: 20px 5px 20px 20px;
     }
 `;
 

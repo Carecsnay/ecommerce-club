@@ -5,8 +5,8 @@ export const CheckoutContainer = styled.div`
     display: flex;
     align-items: center;
     flex-direction: column;
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding: 30px 20px;
+
     overflow: hidden;
 
     p {
@@ -15,6 +15,9 @@ export const CheckoutContainer = styled.div`
 
     button {
         width: 650px;
+        @media (max-width: 768px) {
+            width: 90%;
+        }
     }
 
     & span {
@@ -63,6 +66,10 @@ export const CheckoutProducts = styled.div`
     ::-webkit-scrollbar-thumb:hover {
         background: ${Colors.text.black};
     }
+
+    @media (max-width: 768px) {
+        min-width: 85%;
+    }
 `;
 
 export const CheckoutTotal = styled.p`
@@ -70,4 +77,9 @@ export const CheckoutTotal = styled.p`
     font-size: 1.125rem;
     font-weight: 600;
     margin-bottom: 15px;
+
+    @media (max-width: 768px) {
+        max-width: 85%;
+        text-align: center;
+    }
 `;
