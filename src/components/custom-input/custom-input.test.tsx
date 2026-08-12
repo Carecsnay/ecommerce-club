@@ -1,4 +1,5 @@
-import { fireEvent, render } from "@testing-library/react";
+import { render } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 
 import Colors from "../../theme/theme.colors";
 import CustomInput from "./custom-input.component";
@@ -18,5 +19,17 @@ describe("Custom Input", () => {
         const input = getByPlaceholderText("lorem");
 
         expect(input).toHaveStyle({ border: "none" });
+    });
+
+    it("should change value when user types", () => {
+        const { getByPlaceholderText, getByDisplayValue } = render(
+            <CustomInput placeholder="lorem" hasError={false} />,
+        );
+
+        const input = getByPlaceholderText("lorem");
+
+        userEvent.type(input, "ipsum");
+
+        getByDisplayValue("ipsum");
     });
 });
