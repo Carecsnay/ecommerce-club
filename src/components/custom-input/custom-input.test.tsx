@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { fireEvent, render } from "@testing-library/react";
 
 import Colors from "../../theme/theme.colors";
 import CustomInput from "./custom-input.component";
@@ -12,7 +12,7 @@ describe("Custom Input", () => {
         expect(input).toHaveStyle({ border: `2px solid ${Colors.error}` });
     });
 
-    it("should render with error if hasError is false", () => {
+    it("should render without error if hasError is false", () => {
         const { getByPlaceholderText } = render(<CustomInput placeholder="lorem" hasError={false} />);
 
         const input = getByPlaceholderText("lorem");
