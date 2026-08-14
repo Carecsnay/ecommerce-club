@@ -14,7 +14,7 @@ describe("Category Item", () => {
             products: [],
         };
         const { getByText } = render(
-            <BrowserRouter>
+            <BrowserRouter future={{ v7_relativeSplatPath: true, v7_startTransition: true }}>
                 <CategoryItem category={category}></CategoryItem>
             </BrowserRouter>,
         );
