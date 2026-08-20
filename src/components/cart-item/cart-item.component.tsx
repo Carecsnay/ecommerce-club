@@ -36,12 +36,20 @@ const CartItem = ({ product }: CartItemProps) => {
                 <p>{product.name}</p>
                 <p>{formatCurrency(product.price)}</p>
                 <CartItemQuantity>
-                    <AiOutlineMinus size={16} onClick={handleDecProductClick} />
+                    <AiOutlineMinus
+                        size={16}
+                        onClick={handleDecProductClick}
+                        aria-label={`decrease quantity of ${product.name}`}
+                    />
                     <p>{product.quantity}</p>
-                    <AiOutlinePlus size={16} onClick={handleIncProductClick} />
+                    <AiOutlinePlus
+                        size={16}
+                        onClick={handleIncProductClick}
+                        aria-label={`increase quantity of ${product.name}`}
+                    />
                 </CartItemQuantity>
             </CartItemInfo>
-            <RemoveButton onClick={handleRemProductClick}>
+            <RemoveButton onClick={handleRemProductClick} aria-label={`Remove ${product.name}`}>
                 <AiOutlineClose size={22} />
             </RemoveButton>
         </CartItemContainer>
