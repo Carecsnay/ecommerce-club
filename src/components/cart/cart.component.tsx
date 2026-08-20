@@ -38,7 +38,7 @@ const Cart = () => {
                 ))}
                 {productsCount > 0 && (
                     <>
-                        <CartTotal>{formatCurrency(productsTotalPrice)}</CartTotal>
+                        <CartTotal>Total: {formatCurrency(productsTotalPrice)}</CartTotal>
                         <CustomButton
                             onClick={handleCheckoutClick}
                             name="Ir para o Checkout"

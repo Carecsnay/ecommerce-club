@@ -44,9 +44,10 @@ describe("Cart", () => {
         userEvent.click(increaseButton);
 
         getByText("3");
+        getByText("Total: R$ 300,00");
     });
 
-    it("should increase cart quantity on decrease click", () => {
+    it("should decrease cart quantity on decrease click", () => {
         const products = [{ id: "1", name: "bolsa", price: 100, imageUrl: "image-url", quantity: 2 }];
         const { getByLabelText, getByText } = renderWithRedux(<Cart />, {
             preloadedState: {
@@ -60,6 +61,7 @@ describe("Cart", () => {
         userEvent.click(decreaseButton);
 
         getByText("1");
+        getByText("Total: R$ 100,00");
     });
 
     it("should remove product click", () => {
