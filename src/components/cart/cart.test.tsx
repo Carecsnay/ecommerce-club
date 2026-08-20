@@ -61,4 +61,21 @@ describe("Cart", () => {
 
         getByText("1");
     });
+
+    it("should remove product click", () => {
+        const products = [{ id: "1", name: "bolsa", price: 100, imageUrl: "image-url", quantity: 2 }];
+        const { getByLabelText, getByText, queryByText } = renderWithRedux(<Cart />, {
+            preloadedState: {
+                cartReducer: {
+                    products: products,
+                },
+            },
+        } as any);
+
+        const removeButton = getByLabelText(/Remove bolsa/i);
+        userEvent.click(removeButton);
+
+        expect(queryByText(/bolsa/i)).toBeNull();
+        getByText(/Seu carrinho está vazio!/i);
+    });
 });
