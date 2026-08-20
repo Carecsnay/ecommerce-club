@@ -9,13 +9,13 @@ import rootReducer, { RootState } from "../store/root-reducer";
 export const renderWithRedux = (
     component: React.ReactElement,
     {
-        preloadedState,
+        preloadedState = {},
         store = configureStore({
             reducer: rootReducer,
             preloadedState,
         }),
         ...renderOptions
-    }: { preloadedState: RootState; store?: any },
+    }: { preloadedState?: Partial<RootState>; store?: any },
 ) => {
     const Wrapper = ({ children }: { children: ReactNode }) => {
         return (
