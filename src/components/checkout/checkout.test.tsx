@@ -27,6 +27,8 @@ describe("Checkout", () => {
             },
         }) as any;
 
+        getByText(/checkout/i); //tittle
+
         getByText("bolsa 1"); //nome
         getByText("R$ 1,00"); //preço
         getByText("2"); //quantidade
