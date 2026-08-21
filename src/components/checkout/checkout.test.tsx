@@ -3,7 +3,7 @@ import Checkout from "./checkout.component";
 
 describe("Checkout", () => {
     it("Should checkout render correct products and total price", () => {
-        const { getByText, getAllByText } = renderWithRedux(<Checkout />, {
+        const { getByText } = renderWithRedux(<Checkout />, {
             preloadedState: {
                 cartReducer: {
                     products: [
@@ -39,5 +39,20 @@ describe("Checkout", () => {
 
         getByText("Finalizar Compra"); //botão
         getByText("Total: R$ 8,00"); //total
+    });
+
+    it("Should show empty message if cart is empty and not show checkout button", () => {
+        const { getByText, queryByText } = renderWithRedux(<Checkout />, {
+            preloadedState: {
+                cartReducer: {
+                    products: [],
+                    isVisible: false,
+                },
+            },
+        }) as any;
+
+        getByText(/checkout/i); //title
+        getByText(/seu carrinho está vazio!/i); //mensagem
+        expect(queryByText("Finalizar Compra")).toBeNull; //verifica se o botão não é exibido
     });
 });
