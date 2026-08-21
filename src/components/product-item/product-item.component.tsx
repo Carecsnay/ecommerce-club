@@ -25,6 +25,7 @@ const ProductItem = ({ product }: ProductItemProps) => {
                         onClick={handleAddProductToCart}
                         name={"Adicionar ao Carrinho"}
                         icon={<BsCartPlus size={16} />}
+                        aria-label={`add ${product.name}`}
                     />
                 </ProductImage>
                 <ProductInfo>
