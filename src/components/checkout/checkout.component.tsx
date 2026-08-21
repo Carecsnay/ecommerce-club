@@ -38,7 +38,7 @@ const Checkout = () => {
                                 <CartItem key={product.id} product={product} />
                             ))}
                         </CheckoutProducts>
-                        <CheckoutTotal>{formatCurrency(productsTotalPrice)}</CheckoutTotal>
+                        <CheckoutTotal>Total: {formatCurrency(productsTotalPrice)}</CheckoutTotal>
                         <CustomButton
                             onClick={handleFinishPurchaseClick}
                             name="Finalizar Compra"
