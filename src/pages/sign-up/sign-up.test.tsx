@@ -33,4 +33,18 @@ describe("Sign Up", () => {
 
         await findByText("Por favor, insira um e-mail válido.");
     });
+
+    it("Should must display an error message if the passwords are not identical", async () => {
+        const { getByPlaceholderText, findByText, getByText } = renderWithRedux(<SignUpPage />, {});
+
+        const password = getByPlaceholderText("Digite sua senha");
+        userEvent.type(password, "123456");
+        const passwordConfirmationInput = getByPlaceholderText("Digite novamente sua senha");
+        userEvent.type(passwordConfirmationInput, "123457");
+
+        const submitButton = getByText("Criar Conta");
+        userEvent.click(submitButton);
+
+        await findByText("A confirmação de senha precisa ser igual a senha.");
+    });
 });
