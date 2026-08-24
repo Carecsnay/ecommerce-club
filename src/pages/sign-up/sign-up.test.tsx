@@ -61,4 +61,9 @@ describe("Sign Up", () => {
 
         await findAllByText("A senha deve conter pelo menos seis caracteres."); //multiplos valores, usamos findAllByText
     });
+
+    it("Should render a button correctly", async () => {
+        const { getByText } = renderWithRedux(<SignUpPage />, {});
+        getByText("Criar Conta");
+    });
 });
