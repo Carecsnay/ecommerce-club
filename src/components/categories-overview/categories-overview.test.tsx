@@ -35,8 +35,8 @@ describe("Categories Overview", () => {
         });
 
         const { findByText, getByText } = renderWithRedux(<CategoriesOverview />, {});
-        getByText(/Lorem Ipsum/i); //Nome da categoria
-        await findByText(/cinto/i); //Nome do produto renderizado
+        await findByText(/Lorem Ipsum/i); //Nome da categoria
+        getByText(/cinto/i); //Nome do produto renderizado
         getByText("R$ 320,00"); //Preço do produto
     });
 });
