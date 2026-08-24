@@ -24,4 +24,16 @@ describe("Login", () => {
 
         await findByText("Digite um e-mail válido (ex: nome@email.com).");
     });
+
+    it("Should show error when user stay input password empty", async () => {
+        const { getByPlaceholderText, findByText, getByText } = renderWithRedux(<LoginPage />, {});
+
+        const passwordInput = getByPlaceholderText("Digite seu e-mail");
+        userEvent.type(passwordInput, "");
+
+        const submitButton = getByText("Entrar");
+        userEvent.click(submitButton);
+
+        await findByText("A senha é obrigatória.");
+    });
 });
