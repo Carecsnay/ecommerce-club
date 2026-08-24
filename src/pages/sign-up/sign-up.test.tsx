@@ -1,6 +1,9 @@
 import userEvent from "@testing-library/user-event";
+import * as firebaseAuth from "firebase/auth";
 import { renderWithRedux } from "../../helpers/text.helpers";
 import SignUpPage from "./sign-up.page";
+
+jest.mock("firebase/auth");
 
 describe("Sign Up", () => {
     it("Should render title correctly", () => {
@@ -60,6 +63,33 @@ describe("Sign Up", () => {
         userEvent.click(submitButton);
 
         await findAllByText("A senha deve conter pelo menos seis caracteres."); //multiplos valores, usamos findAllByText
+    });
+
+    it("Should show error if email already exists", async () => {
+        const mockFirebaseAuth = firebaseAuth.createUserWithEmailAndPassword as jest.Mock;
+
+        const { getByPlaceholderText, findByText, getByText } = renderWithRedux(<SignUpPage />, {});
+
+        const name = getByPlaceholderText("Digite seu nome");
+        const lastName = getByPlaceholderText("Digite seu sobrenome");
+        const email = getByPlaceholderText("Digite seu e-mail");
+        const password = getByPlaceholderText("Digite sua senha");
+        const passwordConfirmation = getByPlaceholderText("Digite novamente sua senha");
+
+        userEvent.type(name, "Lorem");
+        userEvent.type(lastName, "Ipsun");
+        userEvent.type(email, "loren@ipsun.com");
+        userEvent.type(password, "123456");
+        userEvent.type(passwordConfirmation, "123456");
+
+        mockFirebaseAuth.mockRejectedValue({
+            code: firebaseAuth.AuthErrorCodes.EMAIL_EXISTS,
+        });
+
+        const submitButton = getByText("Criar Conta");
+        userEvent.click(submitButton);
+
+        await findByText("O e-mail fornecido já está em uso por outro usuário.");
     });
 
     it("Should render a button correctly", async () => {
