@@ -9,12 +9,13 @@ describe("Sign Up", () => {
         getByText("Crie sua conta");
     });
 
-    it.only("Should show error if name input is empty", async () => {
+    it("Should show error if name and last name input is empty", async () => {
         const { getByText, findByText } = renderWithRedux(<SignUpPage />, {});
 
         const submitButton = getByText(/criar conta/i);
         userEvent.click(submitButton);
 
         await findByText("O nome é obrigatório.");
+        getByText("O sobrenome é obrigatório.");
     });
 });
