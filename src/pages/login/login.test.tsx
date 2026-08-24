@@ -2,6 +2,9 @@ import userEvent from "@testing-library/user-event";
 import { renderWithRedux } from "../../helpers/text.helpers";
 import LoginPage from "./login.page";
 
+import { AuthErrorCodes, signInWithEmailAndPassword } from "firebase/auth";
+jest.mock("firebase/auth");
+
 describe("Login", () => {
     it("Should show error when trying to submit witout filling required fields ", async () => {
         const { getByText, findByText } = renderWithRedux(<LoginPage />, {});
@@ -36,4 +39,26 @@ describe("Login", () => {
 
         await findByText("A senha é obrigatória.");
     });
+
+    it("Should show error when invalid credentials are provided", async () => {
+        const mockFirebaseAuth = signInWithEmailAndPassword as jest.Mock;
+
+        mockFirebaseAuth.mockRejectedValue({
+            code: AuthErrorCodes.INVALID_LOGIN_CREDENTIALS,
+        });
+
+        const { getByPlaceholderText, getByText, findAllByText } = renderWithRedux(<LoginPage />, {});
+
+        const emailInput = getByPlaceholderText("Digite seu e-mail");
+        const passwordInput = getByPlaceholderText("Digite sua senha");
+
+        userEvent.type(emailInput, "usuario@teste.com");
+        userEvent.type(passwordInput, "senha123");
+
+        const submitButton = getByText("Entrar");
+        userEvent.click(submitButton);
+
+        await findAllByText("E-mail ou senha incorretos.");
+    });
+
 });
